@@ -1,0 +1,54 @@
+.sp-testimonial-tabs-panel {
+
+    .sp-real-input-control-wrapper {
+        &.sp-flex-input {
+
+            .sp-real-input-control-header {
+                width: 60%;
+            }
+
+            .components-input-control {
+                width: 33%;
+
+                .components-input-control__container {
+                    input[type="number"] {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        &.sp-block-input {
+            .sp-real-input-control-header {
+                width: 100%;
+            }
+
+            .sp-real-input-control-field .components-base-control {
+                width: 100%;
+            }
+        }
+
+        .components-input-control__container:has(input:focus) .components-input-control__backdrop {
+            border-color: rgb(176.8, 176.8, 176.8) !important;
+        }
+
+        input::-webkit-inner-spin-button {
+            margin-right: -12px !important;
+            height: 40px;
+        }
+    }
+
+    // info text css.
+    .sp-real-input-control-header {
+        position: relative;
+
+        .sp-real-label-info-text__popup {
+            bottom: 30px;
+        }
+
+        // style indicator icon css.
+        .sp-real-component-title:has(.sp-real-style-indicator) {
+            width: 100%;
+        }
+    }
+}

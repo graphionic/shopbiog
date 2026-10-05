@@ -1,0 +1,584 @@
+$border-color :#DDDDDD;
+
+// panel body css.
+.sp-testimonial-tabs-panel {
+    * {
+        box-sizing: border-box;
+    }
+
+    .sp-real-component-mb {
+        margin-bottom: 16px;
+        line-height: 1;
+    }
+
+    .sp-real-component-title-mb {
+        margin-bottom: 8px;
+    }
+
+    .sp-real-component-title {
+        display: block;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+
+        &.bold {
+            font-weight: 600;
+        }
+    }
+
+    .sp-real-component-separator {
+        height: 1px;
+        width: 100%;
+        background-color: #DDDDDD;
+
+        &.mb {
+            margin-bottom: 16px;
+        }
+
+        &.mt {
+            margin-top: 16px;
+        }
+    }
+
+    // panel body css.
+    .components-panel__body {
+        .components-panel__body-title {
+            .components-panel__body-toggle {
+                font-size: 13px;
+
+                &:hover {
+                    color: #1e1e1e;
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+        }
+
+        // Active Panel Body Background colgroup
+        &.is-opened {
+            padding: 16px 16px 0 16px;
+
+            .components-panel__body-title {
+                margin-bottom: 18px;
+                background-color: #F0F0F0;
+            }
+
+        }
+    }
+
+    // input control backdrop border color.
+    .components-input-control__container {
+        .components-input-control__backdrop {
+            border-color: #DDDDDD !important;
+        }
+    }
+
+    .components-base-control__field {
+        padding: 0;
+    }
+
+    // focus state: border color, outline and box-shadow.
+    .sp-testimonial-select-field,
+    .components-input-control {
+        .components-input-control__backdrop {
+            border-color: $border-color !important;
+        }
+
+        div:focus-within:not(:has(:is(.components-input-control__suffix):focus-within)) .components-input-control__backdrop,
+        &:hover .components-input-control__backdrop {
+            box-shadow: none;
+        }
+    }
+
+    .block-editor-block-inspector__advanced {
+        display: none;
+    }
+
+    // hide scrollbar 
+    .interface-complementary-area.editor-sidebar {
+        scrollbar-width: none;
+    }
+
+    .components-tooltip.sp-real-component-tooltip {
+        background-color: #444444;
+        color: #FFFFFF;
+        font-size: 11px;
+        font-family: 500;
+    }
+
+    // card contents dnd.
+    .sp-real-card-content-dnd-contents {
+        padding: 10px 10px 0 10px;
+        border: 1px solid #DDDDDD;
+        border-radius: 3px;
+
+        .sp-real-toggle {
+            margin-bottom: 10px;
+        }
+    }
+
+    // status select help note.
+    .sp-real-tsf-status-wrap {
+        .sp-real-tsf-field-note {
+            margin: -8px 0 16px;
+            color: #757575;
+            font-size: 12px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+    }
+
+    // testimonial submission form block editor css.
+    .sp-real-tsf-field-builder {
+        margin-bottom: 16px;
+        position: relative;
+
+        .sp-real-tsf-field-builder-head {
+            margin-bottom: 4px;
+        }
+
+        .sp-real-tsf-field-builder-title {
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .sp-real-tsf-field-builder-reset {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #949494;
+            font-size: 11px;
+            font-weight: 600;
+            line-height: 1.2;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .sp-real-form-field-item {
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: move;
+        }
+
+        .sp-real-form-field-label-right {
+            padding-right: 4px;
+        }
+
+        .sp-real-form-field-delete {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #757575;
+            font-size: 16px;
+            line-height: 1;
+            cursor: pointer;
+
+            &:hover {
+                color: #cc1818;
+            }
+        }
+
+        .sp-real-tsf-field-builder-add {
+            margin-top: 2px;
+            align-self: flex-start;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: var(--sp-real-primary-color);
+            font-size: 13px;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        .sp-real-form-field-label {
+            padding: 8px 4px;
+            background-color: #F0F0F0;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.2;
+            width: 100%;
+        }
+
+        .sp-real-form-field-content {
+            padding: 12px 16px 0 16px;
+        }
+    }
+
+    .sp-real-tsf-filed-insert-popup {
+        position: absolute;
+        z-index: 99;
+        top: 100%;
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #DDDDDD;
+        box-shadow: 0px 4px 10px 1px #00000014;
+        border-radius: 4px;
+
+        span {
+            padding: 5px 16px;
+
+            &:hover {
+                background-color: #E3F3FF;
+            }
+        }
+
+        // Pro-only fields — locked upsell teasers, not clickable.
+        .sp-real-tsf-pro-field {
+            cursor: default;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+            .sp-real-tsf-pro-tag {
+                padding: 0;
+                color: #2f9e44;
+                font-weight: 500;
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    .sp-real-panel-body-notices {
+        border: 1px solid #007CBA14;
+        background-color: #007CBA0A;
+        padding: 12px;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 16px;
+    }
+
+    // classic editor css.
+    .sp-real-classic-editor {
+        .button.insert-media {
+            min-height: 30px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    // card design picker.
+    .sp-real-preset-piker-label {
+        display: flex;
+
+        .sp-real-active-layout {
+            font-weight: 500;
+            color: var(--sp-real-primary-color);
+            text-transform: capitalize;
+        }
+    }
+
+    // navigation icon picker.
+    .sp-real-nav-icon-picker {
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        padding: 5px;
+
+        .sp-real-nav-icon-picker__icon {
+            border: 1px solid #e7e7e7;
+            border-radius: 2px;
+            color: #2f2f2f;
+            cursor: pointer;
+            height: 32px;
+            padding: 3px 4px;
+            transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+            width: 32px;
+
+            &.active {
+                color: #fff;
+                border-color: var(--sp-real-primary-color);
+                background-color: var(--sp-real-primary-color);
+            }
+        }
+    }
+
+    // sortable item css.
+    .sp-real-sortable-item {
+        &.sp-sortable-disabled {
+
+            .sp-real-toggle {
+                cursor: default;
+            }
+
+            .sp-real-toggle-left svg {
+                opacity: 0.5;
+            }
+        }
+
+    }
+
+    button {
+        &:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+}
+
+// remove overflow x from admin inspector panel.
+.interface-complementary-area.editor-sidebar:has(.sp-testimonial-tabs-panel) {
+    overflow-x: hidden;
+}
+
+// hide main sidebar scroll y.
+.interface-complementary-area.editor-sidebar:has(.sp-testimonial-tabs-panel) {
+    scrollbar-width: none;
+}
+
+// hide block default advance tab.
+div:has(>.sp-testimonial-tabs-panel)~div:has(>.block-editor-block-inspector__advanced) {
+    display: none;
+}
+
+// live filter css.
+.sp-real-live-frontend-filter {
+    .block-editor-block-list__layout {
+        width: 100%;
+    }
+}
+
+// Source-review block inspector panel (Reviews / Filter tabs + preview list).
+.sp-real-source-panel {
+    &__tabs {
+        gap: 0;
+        border-bottom: 1px solid #e0e0e0;
+        margin-bottom: 16px;
+    }
+
+    &__tab {
+        flex: 1;
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        padding: 8px 4px;
+        font-weight: 500;
+        color: #50575e;
+        cursor: pointer;
+
+        &.active {
+            color: #1e67d8;
+            border-bottom-color: #1e67d8;
+        }
+    }
+}
+
+// card picker css.
+.sp-real-card-design-variation-picker {
+    .sp-real-icon-set {
+        position: relative;
+        transition: all 0.15s ease-in-out;
+
+        rect:nth-child(2) {
+            transition: all 0.15s ease-in-out;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+
+            rect:nth-child(2) {
+                stroke: var(--sp-real-primary-color) !important;
+            }
+        }
+    }
+}
+
+// Pro-locked picker item (card designs 3-6, Pro carousel layouts, etc.).
+// Hovering dims the preview behind an overlay and reveals a centered "Pro" capsule.
+.sp-real-icon-set-pro {
+    position: relative;
+    border-radius: 4px;
+
+    >svg:first-child {
+        opacity: 0.5;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: rgba(255, 255, 255, 0.45);
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .sp-real-pro-capsule {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 6px;
+        border-radius: 3px;
+        background: #22a11a;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1.7;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+        z-index: 2;
+
+        svg {
+            width: 11px;
+            height: 11px;
+            flex-shrink: 0;
+        }
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+
+        .sp-real-pro-capsule {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    .sp-real-pro-lock {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #f0a12e;
+        z-index: 2;
+
+        svg {
+            width: 12px;
+            height: 12px;
+        }
+    }
+}
+
+// Rating icon style picker.
+.sp-real-rating-style-label {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.sp-real-rating-style-picker {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+
+    .sp-real-rating-style {
+        padding: 6px 7px;
+        font-size: 16px;
+        line-height: 0;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+
+        svg {
+            display: block;
+            width: 1em;
+            height: 1em;
+        }
+
+        .sp-real-rating-style-active {
+            color: #ff9500;
+        }
+
+        .sp-real-rating-style-inactive {
+            color: #949494;
+        }
+
+        &:hover {
+            border-color: var(--sp-real-primary-color);
+        }
+
+        &.is-selected {
+            border-color: var(--sp-real-primary-color);
+            background: #f0f6fc;
+            box-shadow: 0 0 0 1px var(--sp-real-primary-color);
+        }
+    }
+}
+
+// shortcode block.
+.wp-block-sp-testimonial-pro-shortcode,
+.wp-block-sp-testimonial-pro-form {
+    .components-placeholder__label {
+        width: 100%;
+
+        svg {
+            width: 24px;
+        }
+    }
+}
+
+// demo testimonials notice.
+.sp-real-demo-testimonials-notice {
+    border: 1px solid #E3F3FF;
+    background-color: #EBF6FF;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 16px 18px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+
+    a {
+        color: var(--sp-real-primary-color);
+        font-weight: 700;
+        text-decoration: none;
+    }
+}
+
+// clickable canvas elements - clicking one opens the matching inspector panel
+// (see hooks/useCanvasPanelClick). selector list mirrors CANVAS_PANEL_MAP.
+.sp-real-testimonial-client-title,
+.sp-real-testimonial-content,
+.sp-real-client-rating,
+.sp-real-client-image,
+.sp-real-testimonial-client-name,
+.sp-real-client-designation,
+.sp-real-swiper-navigation,
+.sp-real-swiper-pagination {
+    cursor: pointer;
+}
+
+// brief highlight on the panel opened from a card-section click. Inspector.jsx
+// adds .active while TogglePanelBodyContext holds that panel in highlightedPanel.
+.components-panel__body.is-opened.active {
+    animation: sp-real-panel-highlight 0.8s ease-out;
+}
+
+@keyframes sp-real-panel-highlight {
+    0% {
+        background-color: rgba(0, 124, 186, 0.12);
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}

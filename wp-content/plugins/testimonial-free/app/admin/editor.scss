@@ -1,0 +1,614 @@
+@use './responsive-css.scss';
+@use '../blocks/tailwind-class.scss';
+@use './pages/quickStart/quick-start-style.scss';
+@use './pages/blockVisibility/visibility-style.scss';
+@use './pages/saved-templates/saved-templates.scss';
+@use './pages/settings/setting-styles.scss';
+@use './pages/integrations/integrations-style.scss';
+@use './pages/about-us/about-us.scss';
+@use './pages/lite-vs-pro/lite-vs-pro.scss';
+@use './setup-wizard/setup-wizard.scss';
+
+$primary-text-color: #1E1E1E;
+
+/*
+ * ADMIN DASHBOARD LAYOUT CSS.
+ */
+
+.sp-real-admin-dashboard-wrapper {
+    margin-left: -20px;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    // width and padding.
+    .sp-real-admin-dashboard-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    .sp-real-admin-dashboard-header .sp-real-block-setting-header-wrapper {
+        padding: 0 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    // override default a tag focus style.
+    .wp-person a:focus .gravatar,
+    a:focus,
+    a:focus .media-icon img,
+    a:focus .plugin-icon {
+        box-shadow: none;
+        outline: none;
+    }
+
+    // component title.
+    .sp-real-component-title {
+        color: var(--sp-real-primary-text-color);
+        font-size: 14px;
+        line-height: 1.4;
+        font-weight: 600;
+    }
+
+    .sp-real-company-name {
+        &:hover {
+            color: var(--sp-real-primary-color);
+            transition: color 0.4s ease-in-out;
+        }
+    }
+
+    // components css.
+    .sp-real-settings-checkbox {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        border: 1px solid #D1D5DB;
+        background-color: #ffffff;
+        cursor: pointer;
+        position: relative;
+        margin: 0;
+        flex-shrink: 0;
+        transition: all 0.15s ease;
+
+        &:hover {
+            border-color: #3B5BFE;
+        }
+
+        &:checked {
+            background-color: #3B5BFE;
+            border-color: #3B5BFE;
+
+            &:before {
+                display: none;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 2px;
+                left: 6px;
+                width: 5px;
+                height: 10px;
+                border: solid #ffffff;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+        }
+
+        &:focus,
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 91, 254, 0.2);
+        }
+    }
+
+    input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1.5px solid #D1D5DB;
+        background-color: #ffffff;
+        cursor: pointer;
+        margin: 0;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.15s ease;
+
+        &:hover {
+            border-color: #3B5BFE;
+        }
+
+        &:checked {
+            border-color: #3B5BFE;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: #3B5BFE;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &:focus,
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 91, 254, 0.2);
+        }
+    }
+
+    select {
+        min-width: 280px;
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid #D1D5DB;
+        padding: 0 36px 0 12px;
+        font-size: 14px;
+        color: #1F2937;
+        background-color: #ffffff;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+
+        &:focus,
+        &:focus-visible {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+}
+
+/*
+ * HEADER (Figma Design)
+ */
+.sp-real-admin-dashboard-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 44px;
+
+    .sp-real-admin-dashboard-header-left {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .sp-real-dashboard-logo {
+        height: 24px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .sp-real-plugin-version {
+        border: 1px solid #ddd;
+        border-radius: 17px;
+        height: 24px;
+        padding: 4px 10px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #2f2f2f;
+        cursor: pointer;
+        background: #fff;
+
+        svg,
+        img {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    // Navigation in center
+    .sp-real-admin-dashboard-nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        border: none;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 24px;
+            margin: 0;
+        }
+    }
+
+    .sp-real-admin-dashboard-header-right {
+        width: 200px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-shrink: 0;
+    }
+}
+
+/*
+ * GET HELP (same as wp-carousel-pro)
+ */
+.sp-real-admin-dashboard-header-right {
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    padding: 20px 0;
+
+    svg {
+        color: #19949e;
+    }
+
+    &:hover .sp-real-help-drop-down {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .sp-real-help-drop-down {
+        position: absolute;
+        top: 46px;
+        background: #fff;
+        right: 0;
+        padding: 10px;
+        text-align: left;
+        border-radius: 4px;
+        box-shadow: 0 2px 15px 0 rgba(17, 17, 17, 0.15);
+        z-index: 10;
+        width: 244px;
+        display: flex;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+    }
+
+    .sp-real-support-link {
+        font-size: 16px;
+        font-weight: 400;
+        color: #565A5F;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        position: relative;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .sp-real-dropdown-arrow {
+            width: 16px;
+            height: 18px;
+            scale: 0.8;
+            fill: #565A5F;
+            margin-left: auto;
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: 80%;
+                left: -10px;
+                transform: translate(-50%, -50%) rotate(-10deg);
+                transition: all 0.5s;
+                opacity: 0;
+            }
+        }
+
+        &:hover {
+            background: #eaf1fa;
+
+            .sp-real-dropdown-arrow {
+                svg {
+                    left: 0px;
+                    top: 40%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+/*
+ * NAV TABS (Figma Design)
+ */
+.sp-real-admin-dashboard-header {
+    .sp-real-admin-dashboard-nav {
+        position: relative;
+
+        // Sliding indicator
+        .sp-real-nav-sliding-indicator {
+            position: absolute;
+            bottom: 0;
+            height: 2px;
+            background-color: var(--sp-real-primary-color);
+            border-radius: 1px;
+            transition: left 0.3s ease, width 0.3s ease;
+            pointer-events: none;
+        }
+
+        // Dropdown trigger — mobile only (shown in responsive-css.scss).
+        .sp-real-nav-mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            color: #2f2f2f;
+        }
+
+        li {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: normal;
+            margin: 0;
+
+            a {
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                height: 64px;
+                padding: 24px 0;
+                color: #2f2f2f;
+                transition: color 0.3s ease;
+                position: relative;
+
+                &.active {
+                    color: var(--sp-real-primary-color);
+                }
+
+                // Badge styles (Figma Design)
+                .sp-real-nav-badge {
+                    position: absolute;
+                    top: 11px;
+                    right: 0px;
+                    background-color: transparent;
+                    color: #f18200;
+                    font-size: 10px;
+                    font-weight: 500;
+                    padding: 0;
+                    border-radius: 0;
+                    white-space: nowrap;
+                    line-height: normal;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+/*
+ * CHANGELOG CSS.
+ */
+.sp-real-changelog-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 400px;
+    background: #fff;
+    top: 32px !important;
+
+    .sp-real-changelog-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .sp-real-changelog-heading-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #1e1e1e;
+    }
+
+    .sp-real-changelog-close-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        color: #717171;
+
+        &:hover {
+            background-color: #f5f5f5;
+            color: #1e1e1e;
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    .sp-real-changelog-details {
+        padding: 8px 20px 30px 20px;
+        flex: 1;
+        overflow-y: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #2f2f2f;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            color: #1e1e1e;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        li {
+            list-style: disc;
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #1a74e4;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        pre {
+            background-color: #f5f5f5;
+            padding: 16px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+
+            code {
+                background: none;
+                padding: 0;
+            }
+        }
+
+        blockquote {
+            border-left: 4px solid #1a74e4;
+            padding-left: 16px;
+            margin: 16px 0;
+            color: #757575;
+            font-style: italic;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 24px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+
+            th,
+            td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            th {
+                background-color: #f5f5f5;
+                font-weight: 600;
+            }
+
+            tr:last-child td {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+/*
+ * SAVE AND RESET BUTTONS CSS.
+ */
+.sp-real-settings-save-wrapper {
+    margin-top: 30px;
+
+    button {
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 11px 24px;
+        min-width: 110px;
+        height: 44px;
+        line-height: 1;
+        border: 1px solid transparent;
+        transition: all .2s ease-in-out;
+    }
+
+    .sp-real-settings-save-btn {
+        background-color: #9CA3AF;
+        color: #ffffff;
+        border-color: #9CA3AF;
+        cursor: not-allowed;
+
+        &.active {
+            background-color: #16A34A;
+            border-color: #16A34A;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #15803D;
+                border-color: #15803D;
+            }
+        }
+    }
+
+    .sp-real-settings-reset-btn {
+        background-color: #ffffff;
+        color: #EF4444;
+        border-color: #EF4444;
+
+        &:hover {
+            background-color: #FEF2F2;
+        }
+    }
+}

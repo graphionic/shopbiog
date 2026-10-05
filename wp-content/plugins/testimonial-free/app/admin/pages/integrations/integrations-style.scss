@@ -1,0 +1,224 @@
+.sp-real-integrations-page-items-wrapper {
+    gap: 30px;
+
+    .sp-real-integrations-card {
+        gap: 16px;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0px 1px 2px 0px #11111133;
+        border-radius: 12px;
+
+        &__settings:hover {
+            color: #2663EB;
+        }
+    }
+
+    .sp-real-integrations-card__label {
+        margin: 0;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    .sp-real-integrations-card__desc {
+        color: #757575;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .sp-real-integrations-card__pro-badge {
+        color: #4AB866;
+        background-color: #EFFFF5;
+        border: 0.8px solid #93DCAC;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 1;
+        text-transform: uppercase;
+        padding: 4px 6px;
+        white-space: nowrap;
+    }
+
+    .sp-real-integrations-card__links {
+        margin-top: 16px;
+
+        a {
+            color: #757575;
+            padding: 4px 10px;
+            background-color: #FBFCFF;
+            border: 1px solid #ECEDF0;
+            border-radius: 4px;
+            transition: all 0.4s ease-in-out;
+
+            svg path {
+                transition: all 0.4s ease-in-out;
+            }
+
+            .sp-real-video-play-icon {
+                color: #b3b3b3;
+            }
+
+            &:hover,
+            &:focus {
+                color: #fff;
+                background-color: #2663EB;
+                border-color: #2663EB;
+
+                .sp-real-video-play-icon {
+                    color: #fff;
+                }
+
+                .sp-real-docs-link-icon path,
+                .sp-real-demo-link-icon path {
+                    stroke: #fff;
+                }
+            }
+        }
+    }
+}
+
+.sp-real-setting-tab-content {
+    .sp-real-integrations-card {
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+}
+
+.sp-real-dashboard-page-header {
+    margin-bottom: 20px;
+
+    .sp-real-dashboard-page-header__label {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    .sp-real-dashboard-page-header__desc {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.3;
+    }
+
+    &.sp-real-upcoming-modules {
+        margin-top: 48px;
+    }
+}
+
+.sp-real-dashboard-upcoming-text {
+    color: #ffff;
+    background-color: #641DD7;
+    line-height: 1;
+    font-weight: 500;
+    margin-left: 10px;
+
+    &.large {
+        padding: 5px 10px;
+        border-radius: 99px;
+        font-size: 14px;
+    }
+
+    &.small {
+        padding: 4px 6px;
+        border-radius: 99px;
+        font-size: 11px;
+    }
+}
+
+.sp-real-upcoming-card {
+    cursor: default;
+    pointer-events: none;
+}
+
+// integration settings popup (design mirrors Real Testimonials Pro).
+.sp-real-integration-settings-popup {
+    .components-modal__content {
+        width: 960px;
+        padding: 32px 48px;
+    }
+
+    .components-modal__header {
+        padding: 30px 48px;
+        border-bottom: 1px solid #dddddd;
+
+        .components-modal__header-heading {
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .components-button:focus {
+            box-shadow: none;
+        }
+    }
+
+    .sp-real-integrations__modal-content-wrapper {
+        gap: 24px;
+        background: #fafafa;
+        padding: 25px;
+        border: 1px solid #f0f0f0;
+        border-radius: 6px;
+    }
+
+    .sp-real-integrations__modal-input-label {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.2;
+        margin: 0 0 8px 0;
+    }
+
+    .sp-real-integrations__modal-field-row {
+        gap: 24px;
+    }
+
+    .sp-real-site-secret-key-wrapper {
+        width: 50%;
+    }
+
+    .sp-real-site-secret-key-label {
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .sp-real-integrations__modal-input {
+        height: 40px;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #dcdcde;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 1;
+
+        &:focus {
+            border-color: #dcdcde;
+            box-shadow: none;
+            outline: none;
+        }
+    }
+
+    .sp-real-integrations__modal-field {
+        .sp-real-component-help {
+            display: block;
+            margin-top: 8px;
+            color: #757575;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.2;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.sp-real-modules-pro-btn {
+    a {
+        font-weight: 600;
+        font-size: 16px;
+    }
+}
+
+.sp-real-pro-modules {
+    margin-top: 48px;
+}

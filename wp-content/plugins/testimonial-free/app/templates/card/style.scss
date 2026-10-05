@@ -1,0 +1,170 @@
+/**
+ * TestimonialPro Card Template Styles
+ * Modern card layout with rating at top, content middle, reviewer info at bottom
+ *
+ * @since 4.0.0
+ * @version 1.0.0
+ * @package TestimonialPro/Templates
+ */
+
+// Card container - white with shadow
+.sp-real-card-inner {
+	display: flex;
+	flex-direction: column;
+	transition: all 0.3s ease;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+// Card hover effects — driven by a modifier class on the card wrapper
+// (.sp-real-card-effect-*). Transition duration is set per-instance via
+// dynamic CSS on .sp-real-card-inner.
+.sp-real-testimonial-card {
+	&.sp-real-card-effect-scale-up:hover .sp-real-card-inner {
+		transform: scale(1.04);
+	}
+
+	&.sp-real-card-effect-scale-down:hover .sp-real-card-inner {
+		transform: scale(0.96);
+	}
+
+	&.sp-real-card-effect-slide-up:hover .sp-real-card-inner {
+		transform: translateY(-8px);
+	}
+
+	&.sp-real-card-effect-slide-down:hover .sp-real-card-inner {
+		transform: translateY(8px);
+	}
+
+	&.sp-real-card-effect-slide-left:hover .sp-real-card-inner {
+		transform: translateX(-8px);
+	}
+
+	&.sp-real-card-effect-slide-right:hover .sp-real-card-inner {
+		transform: translateX(8px);
+	}
+}
+
+.sp-real-template-wrapper {
+	position: relative;
+}
+
+.sp-real-verified-badge {
+	line-height: 1;
+}
+
+// Client Image.
+.sp-real-client-image {
+	width: 100%;
+
+	.sp-real-client-image-wrap {
+		position: relative;
+		display: inline-block;
+		line-height: 0;
+	}
+
+	.sp-real-video {
+		position: relative;
+		display: inline-block;
+		line-height: 0;
+
+		svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			fill: #ffff;
+			z-index: 1;
+		}
+	}
+
+}
+
+// reset default margin.
+.sp-real-client-name,
+.sp-real-client-title {
+	margin: 0;
+}
+
+.sp-real-client-name {
+	text-transform: capitalize;
+}
+
+// Verified badge — blue tick beside the reviewer name.
+.sp-real-testimonial-client-name {
+	gap: 4px;
+}
+
+// transition.
+.sp-real-img-tag {
+	transition: all 0.3s ease-in-out;
+}
+
+// Client rating.
+.sp-real-client-rating {
+	font-size: 16px;
+	line-height: 0;
+
+	// Each star slot. Half slots stack a clipped fill over a base icon.
+	.sp-real-rating-icon {
+		position: relative;
+		display: inline-flex;
+
+		svg {
+			display: block;
+			width: 1em;
+			height: 1em;
+		}
+	}
+
+	.sp-real-rating-full {
+		color: #FF9500;
+	}
+
+	.sp-real-rating-empty {
+		color: #E0E0E0;
+	}
+
+	.sp-real-rating-half {
+		color: #E0E0E0;
+
+		.sp-real-rating-fill {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			overflow: hidden;
+			color: #FF9500;
+		}
+	}
+}
+
+// client contact.
+.sp-real-client-contact {
+	color: #757575;
+}
+
+// designation.
+.sp-real-client-designation {
+	.sp-real-designation-link {
+		color: inherit;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+// card css.
+// card two.
+.sp-real-card-design-two {
+	position: relative;
+
+	.sp-real-client-image {
+		position: absolute;
+	}
+}
+

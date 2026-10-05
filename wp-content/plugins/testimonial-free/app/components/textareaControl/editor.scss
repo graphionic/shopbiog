@@ -1,0 +1,17 @@
+.sp-real-text-area-control {
+    .components-base-control .components-base-control__field {
+        .components-textarea-control__input {
+            height: 60px;
+        }
+    }
+
+    textarea {
+        border-radius: 2px;
+        border-color: #DDDDDD !important;
+
+        &:focus {
+            border-color: rgb(176.8, 176.8, 176.8) !important;
+            box-shadow: none !important;
+        }
+    }
+}

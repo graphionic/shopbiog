@@ -1,0 +1,216 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+if ( ! class_exists( 'WFACP_Analytics_Pint' ) ) {
+	#[AllowDynamicProperties]
+	class WFACP_Analytics_Pint extends WFACP_Analytics {
+		private static $self = null;
+		protected $slug      = 'pint';
+
+		protected function __construct() {
+			parent::__construct();
+		}
+
+		public static function get_instance() {
+			if ( is_null( self::$self ) ) {
+				self::$self = new self();
+			}
+
+			return self::$self;
+		}
+
+		public function get_key() {
+
+			$get_pixel_key = apply_filters( 'wfacp_pinterest_key', $this->admin_general_settings->get_option( 'pint_key' ) );
+
+			return empty( $get_pixel_key ) ? '' : $get_pixel_key;
+		}
+
+		public function enable_custom_event() {
+			return $this->admin_general_settings->get_option( 'is_pint_custom_events' );
+		}
+
+		/**
+		 * @param $product_obj WC_Product
+		 * @param $cart_item WC_Order_Item
+		 *
+		 * @return array
+		 */
+		public function get_item( $product_obj, $cart_item ) {
+			if ( ! $product_obj instanceof WC_Product ) {
+				return parent::get_item( $product_obj, $cart_item );
+			}
+
+			$product_id = $this->get_cart_item_id( $cart_item );
+
+			if ( $cart_item['variation_id'] ) {
+				$variation = wc_get_product( $cart_item['variation_id'] );
+				if ( $variation->get_type() === 'variation' ) {
+					$categories   = implode( ', ', $this->get_object_terms( 'product_cat', $variation->get_parent_id() ) );
+					$product_tags = implode( ', ', $this->get_object_terms( 'product_tag', $variation->get_parent_id() ) );
+				} else {
+					$categories   = implode( ', ', $this->get_object_terms( 'product_cat', $product_id ) );
+					$product_tags = implode( ', ', $this->get_object_terms( 'product_tag', $product_id ) );
+				}
+			} else {
+				$categories   = implode( ', ', $this->get_object_terms( 'product_cat', $product_id ) );
+				$product_tags = implode( ', ', $this->get_object_terms( 'product_tag', $product_id ) );
+			}
+
+			$item_id   = $this->get_cart_item_id( $cart_item );
+			$item_id   = $this->get_product_content_id( $item_id );
+			$sub_total = apply_filters( 'wfacp_add_to_cart_tracking_line_subtotal', isset( $cart_item['line_subtotal'] ) ? $cart_item['line_subtotal'] : 0, 'pint', $this->admin_general_settings );
+
+			if ( ! wc_string_to_bool( $this->exclude_tax ) ) {
+				$sub_total += isset( $cart_item['line_subtotal_tax'] ) ? $cart_item['line_subtotal_tax'] : 0;
+			}
+
+			$sub_total = $this->number_format( $sub_total );
+			$quantity  = ! empty( $cart_item['quantity'] ) ? absint( $cart_item['quantity'] ) : 1;
+			$line_item = array(
+				'product_id'       => $item_id,
+				'product_name'     => $product_obj->get_name(),
+				'product_price'    => floatval( $sub_total ),
+				'product_quantity' => $quantity,
+				'product_category' => $categories,
+			);
+
+			if ( ! empty( $product_tags ) ) {
+				$line_item['tags'] = $product_tags;
+			}
+
+			return $line_item;
+		}
+
+
+		public function remove_item( $product_obj, $cart_item ) {
+			return $this->get_item( $product_obj, $cart_item );
+		}
+
+
+		public function get_checkout_data() {
+			return $this->prepare_tracking_data();
+		}
+
+		public function get_add_to_cart_data() {
+			return $this->prepare_tracking_data();
+		}
+
+		/**
+		 * Prepare Pinterest tracking data for checkout and add-to-cart events.
+		 *
+		 * Includes Pinterest Enhanced Match data (content_ids, em, external_id)
+		 * for improved conversion tracking.
+		 *
+		 * @return array Array containing tracking data with line items and event metadata.
+		 */
+		public function prepare_tracking_data() {
+			global $post;
+			$output = array();
+			if ( ! function_exists( 'WC' ) || is_null( WC()->cart ) ) {
+				return $output;
+			}
+			if ( ! is_null( $post ) && $post instanceof WP_Post ) {
+				$output['page_title'] = $post->post_title;
+				$output['post_id']    = $post->ID;
+			}
+
+			$contents = WC()->cart->get_cart_contents();
+			if ( empty( $contents ) ) {
+				return $output;
+			}
+
+			$output      = array( 'line_items' => array() );
+			$num_items   = 0;
+			$price       = 0;
+			$content_ids = array();
+			foreach ( $contents as $item ) {
+				if ( $item['data'] instanceof WC_Product ) {
+					$add_to_cart = $this->get_item( $item['data'], $item );
+					if ( empty( $add_to_cart ) ) {
+						continue;
+					}
+					$output['line_items'][] = $add_to_cart;
+					$num_items             += absint( $add_to_cart['product_quantity'] );
+					$price                 += $add_to_cart['product_quantity'] * $add_to_cart['product_price'];
+					// Collect product IDs for content_ids array
+					if ( ! empty( $add_to_cart['product_id'] ) ) {
+						$product_id = (string) $add_to_cart['product_id'];
+						if ( ! in_array( $product_id, $content_ids, true ) ) {
+							$content_ids[] = $product_id;
+						}
+					}
+				}
+			}
+
+			$event_data = array(
+				'event_id'       => WFACP_Common::generate_transient_key(),
+				'value'          => $price,
+				'order_quantity' => $num_items,
+				'currency'       => get_woocommerce_currency(),
+				'content_type'   => 'product',
+				'user_role'      => WFACP_Common::get_current_user_role(),
+				'event_url'      => $this->getEventRequestUri(),
+			);
+
+			// Add content_ids (product_id array) for Pinterest
+			if ( ! empty( $content_ids ) ) {
+				$event_data['content_ids'] = $content_ids;
+			}
+
+			// Add email (em) and external_id from advanced matching data for Pinterest Enhanced Match
+			$params = WFACP_Common::advanced_matching_data();
+
+			// Try to get email from advanced matching data first
+			$email = '';
+			if ( ! empty( $params ) && is_array( $params ) && ! empty( $params['em'] ) ) {
+				$email = $params['em'];
+			}
+
+			// If email not available, try to get from WooCommerce customer session
+			if ( empty( $email ) && function_exists( 'WC' ) && ! is_null( WC()->customer ) ) {
+				$customer_email = WC()->customer->get_billing_email();
+				if ( ! empty( $customer_email ) ) {
+					$email = $customer_email;
+				}
+			}
+
+			// If email still not available, try to get from posted data
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Read-only tracking data, nonce not applicable
+			if ( empty( $email ) && ! empty( $_POST['billing_email'] ) ) {
+				$email = sanitize_email( wp_unslash( $_POST['billing_email'] ) );
+			}
+
+			// Add email (em) - hashed with SHA256
+			if ( ! empty( $email ) ) {
+				$event_data['em'] = hash( 'sha256', strtolower( trim( $email ) ) );
+			}
+
+			// Add external_id from advanced matching data
+			if ( ! empty( $params ) && is_array( $params ) && ! empty( $params['external_id'] ) ) {
+				$external_id = $params['external_id'];
+				if ( is_numeric( $external_id ) ) {
+					$event_data['external_id'] = hash( 'sha256', (string) $external_id );
+				} else {
+					$event_data['external_id'] = $external_id;
+				}
+			}
+
+			$output = array_merge( $output, $event_data );
+
+			if ( ! empty( $_COOKIE['wffn_referrer'] ) ) {
+				$output['referrer'] = bwf_clean( wp_unslash( $_COOKIE['wffn_referrer'] ) );
+			}
+			return array( $output );
+		}
+
+		public function is_global_add_to_cart_enabled() {
+			return wc_string_to_bool( $this->admin_general_settings->get_option( 'is_pint_add_to_cart_global' ) );
+		}
+
+		public function is_global_pageview_enabled() {
+			return wc_string_to_bool( $this->admin_general_settings->get_option( 'is_pint_page_view_global' ) );
+		}
+	}
+}

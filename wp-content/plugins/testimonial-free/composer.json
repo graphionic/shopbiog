@@ -1,0 +1,33 @@
+{
+    "name": "shapedplugin/testimonial-free",
+    "description": "Most Customizable and Powerful Testimonials Showcase Plugin for WordPress that allows you to manage and display Testimonials or Reviews on any page or widget.",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "ShapedPlugin",
+            "email": "hello@shapedplugin.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ShapedPlugin\\TestimonialFree\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ShapedPlugin\\TestimonialFree\\Tests\\": "tests/php/"
+        }
+    },
+    "require": {},
+    "require-dev": {},
+    "scripts": {
+        "test": "@php tests/php/run.php"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

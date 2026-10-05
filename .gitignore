@@ -1,0 +1,25 @@
+# Environment / secrets
+/wp-config.php
+/.htaccess
+
+# Media and generated content
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/wflogs/
+/wp-content/ai1wm-backups/
+/wp-content/wp-rocket-config/
+
+# Migration backups & Database Dumps
+*.wpress
+*.sql
+*.tar
+*.gz
+
+# Logs / temp / IDE
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

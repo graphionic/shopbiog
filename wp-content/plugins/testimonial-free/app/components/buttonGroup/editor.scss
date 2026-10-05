@@ -1,0 +1,97 @@
+$border-color :#DDDDDD;
+$hover-border-color :rgb(176.8, 176.8, 176.8);
+
+.sp-testimonial-tabs-panel {
+    .sp-real-button-group {
+
+        .sp-real-button-group-items {
+            position: relative;
+            width: 100%;
+            border: 1px solid $border-color;
+            border-radius: 2px;
+            height: 40px;
+            padding: 4px 3px;
+            gap: 2px;
+        }
+
+        // Sliding highlight — runs from the old button to the newly selected one.
+        .sp-real-bg-indicator {
+            position: absolute;
+            top: 4px;
+            left: 3px;
+            height: calc(100% - 8px);
+            width: calc((100% - 6px - (var(--total-buttons) - 1) * 2px) / var(--total-buttons));
+            background-color: #E3F3FF;
+            border: 1px solid #BCE0FF;
+            border-radius: 2px;
+            transform: translateX(calc(var(--active-index) * (100% + 2px)));
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .sp-real-button-component[value='text-number'] {
+            width: 150%;
+        }
+
+        // border right css.
+        .sp-real-button-component {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            flex: 0 0 auto;
+            border-radius: 2px;
+            background-color: transparent;
+            width: calc((100% - ((var(--total-buttons) - 1) * 2px)) / var(--total-buttons));
+
+            // active button.
+            &:not(:last-child) {
+                .sp-real-button-group-content {
+                    border-right: 1px solid #DDDDDD;
+                }
+            }
+
+            &.active {
+                color: var(--sp-real-primary-color);
+
+                .sp-real-button-group-content {
+                    border-right-color: transparent;
+                }
+
+                svg {
+                    fill: var(--sp-real-primary-color);
+
+                    path {
+                        stroke: var(--sp-real-primary-color);
+                        fill: var(--sp-real-primary-color);
+                    }
+
+                }
+            }
+
+            &:has(+ button.active) {
+                .sp-real-button-group-content {
+                    border-right-color: transparent;
+                }
+            }
+
+            // Pro-locked item: muted label, no interaction, green "(Pro)" tag.
+            &.sp-real-bg-pro {
+                cursor: not-allowed;
+                color: #757575;
+            }
+        }
+
+        .sp-real-button-group-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1;
+        }
+    }
+}

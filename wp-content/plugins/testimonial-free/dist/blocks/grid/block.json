@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "sp-testimonial-pro/grid",
+    "title": "Grid",
+    "category": "sp-testimonial-pro",
+    "description": "Display testimonials evenly in a responsive multi-column grid.",
+    "textdomain": "testimonial-free",
+    "editorScript": "sp-real-blocks-editor",
+    "editorStyle": "sp-real-blocks-editor",
+    "script": "sp-real-blocks-frontend",
+    "style": "sp-real-blocks-style",
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "customClassName": true
+    },
+    "example": {
+        "attributes": {
+            "isPreview": true
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.sp-testimonial-tabs-panel {
+  .sp-real-background-left {
+    .sp-bg-indicator {
+      line-height: 1;
+      border: 1px solid transparent;
+      padding: 4px;
+      height: 26px;
+      cursor: pointer;
+      background-color: transparent;
+
+      &.active {
+        border-color: var(--sp-real-primary-color);
+      }
+    }
+  }
+
+  .sp-real-background {
+    legend {
+      display: none;
+    }
+
+    .components-circular-option-picker {
+      display: none;
+    }
+
+    .components-select-control__input {
+      height: 30px !important;
+      min-height: 30px !important;
+    }
+  }
+}

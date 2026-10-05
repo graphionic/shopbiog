@@ -1,0 +1,42 @@
+// tailwind.
+@use "./tailwind-class.scss";
+@use "../templates/card/style.scss";
+// child blocks css.
+@use "./child-blocks-styles.scss";
+// parent blocks css.
+@use "./parent-blocks-styles.scss";
+
+$real-transition: background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+
+.sp-real-testimonial-block {
+    max-width: 100%;
+
+    button:not(:disabled) {
+        cursor: pointer;
+        transition: $real-transition;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    input {
+        transition: $real-transition;
+    }
+
+    input:focus,
+    input:focus-visible,
+    textarea:focus,
+    select:focus,
+    a:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+}

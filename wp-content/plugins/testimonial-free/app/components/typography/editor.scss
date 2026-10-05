@@ -1,0 +1,157 @@
+$border-color: #DDDDDD;
+
+$field-height: 32px;
+
+// font family select.
+.sp-testimonial-tabs-panel {
+    .sp-real-typography-header {
+        border-bottom: 1px solid $border-color;
+        padding: 12px 20px;
+        background-color: #F2F2F2;
+        margin: -20px -20px 10px -20px;
+
+        span {
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 20px;
+            letter-spacing: 0%;
+        }
+    }
+
+    .sp-real-typography {
+
+        input[type="text"]:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .css-1u9des2-indicatorSeparator {
+            display: none;
+        }
+
+        .components-button:hover,
+        .components-button[aria-expanded="true"] {
+            color: var(--sp-real-primary-color);
+        }
+
+        .components-select-control__input {
+            height: $field-height !important;
+            min-height: $field-height !important;
+        }
+    }
+
+    .sp-real-typography-select-fields {
+        gap: 16px;
+
+        .sp-real-select-field {
+            width: 100%;
+        }
+
+        .sp-real-select-field {
+            flex-direction: column;
+        }
+    }
+
+    //  family select styles.
+    .sp-real-font-family-select__control {
+        line-height: 1;
+        height: $field-height;
+        min-height: $field-height;
+        border-radius: 2px;
+        border-color: $border-color;
+        box-shadow: none;
+
+        &:hover,
+        &--is-focused {
+            border-color: rgb(177, 177, 177);
+        }
+    }
+
+    .sp-real-font-family-select__control,
+    .sp-real-font-family-select__option {
+        cursor: pointer;
+    }
+
+    .sp-real-font-family-select__indicator {
+        padding: 6px;
+
+        svg {
+            stroke-width: 0px;
+            fill: #1E1E1E;
+            height: 15px;
+        }
+    }
+
+    .sp-real-font-family-select__value-container {
+        padding: 0 6px;
+    }
+
+    .sp-real-font-family-select__menu {
+        width: 160px;
+        z-index: 999;
+    }
+
+    .sp-real-font-family-select__option {
+
+        &:hover,
+        &--is-selected {
+            color: #fff !important;
+            background-color: var(--sp-real-primary-color) !important;
+        }
+
+        &--is-focused {
+            color: #1E1E1E;
+            background-color: transparent;
+        }
+    }
+
+    .sp-real-font-family-select__input-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .sp-real-font-family-select__input {
+        min-height: 100%;
+
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    }
+
+    .sp-real-global-family-picker {
+        .sp-real-font-family-select__menu {
+            width: 100%;
+        }
+    }
+
+    .sp-real-font-family-select__menu-list {
+        max-height: 220px;
+        width: 100%;
+    }
+
+    .sp-real-popover-toggle-button.active {
+        color: #fff;
+
+        .sp-real-typography-icon {
+            svg {
+                border-radius: 4px;
+                fill: var(--sp-real-primary-color);
+
+                rect {
+                    stroke: var(--sp-real-primary-color);
+                }
+
+                path {
+                    stroke: #fff;
+                    fill: var(--sp-real-primary-color);
+                }
+            }
+        }
+    }
+
+    // HIDE TYPOGRAPHY POPUP TRIGGER BUTTON OUTLINE.
+    .sp-real-popover-toggle-button.active:has(.sp-real-typography-icon) {
+        outline: none;
+    }
+}
