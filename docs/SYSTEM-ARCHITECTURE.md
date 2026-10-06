@@ -4,6 +4,17 @@ This document defines the structural architecture, code ownership boundaries, an
 
 ---
 
+## Current Active Architecture State (Phase 4 Verified)
+
+- **Active Theme Name**: Elessi Theme Child
+- **Active Template**: `elessi-theme` (Parent Theme: Elessi)
+- **Active Stylesheet**: `elessi-theme-child`
+- **Presentation Layer**: `wp-content/themes/elessi-theme-child/`
+- **Functionality Layer**: `wp-content/plugins/shopbiog-core/`
+- **Database Theme Mod State**: `theme_mods_elessi-theme-child` synchronized 1:1 with `theme_mods_elessi-theme`.
+
+---
+
 ## Architectural Layers
 
 ```
@@ -24,7 +35,7 @@ This document defines the structural architecture, code ownership boundaries, an
 │                                                                          │
 │ 1. Presentation Layer:                                                   │
 │    wp-content/themes/elessi-theme-child/                                 │
-│    - Visual presentation & CSS styling                                   │
+│    - Visual presentation & CSS styling (`assets/css/`)                   │
 │    - Typography & responsive design tokens                               │
 │    - WooCommerce layout-level presentation                               │
 │    - Template overrides (when strictly required)                         │
@@ -55,3 +66,12 @@ When implementing any feature or modification, solutions must be chosen in the f
 3. **Child Theme Presentation (`elessi-theme-child`)**
 4. **Custom Plugin Modules (`shopbiog-core`)**
 5. **WooCommerce Template Overrides** *(Only when hooks and filters cannot achieve the requirement)*
+
+---
+
+## Module Boundaries
+
+### Presentation vs Functionality Rule
+- **Functionality (`shopbiog-core`)**: Contains PHP business logic, custom calculations, WooCommerce backend hooks, tracking integration bridges, performance unloading, and admin controls.
+- **Presentation (`elessi-theme-child`)**: Contains CSS visual styling, color design tokens, typography definitions, responsive media queries, and client-side UI micro-interactions.
+- Business logic MUST NOT be placed in `elessi-theme-child/functions.php`.
