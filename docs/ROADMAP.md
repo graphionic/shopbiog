@@ -26,8 +26,9 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 
 ### PHASE 5: Plugin Reduction & Feature Migration
 * **Phase 5A — Plugin Reduction Blueprint**: Completed full inventory, deep-dive usage analysis of 30 plugins, replacement mapping, and 6-wave migration plan (`docs/PLUGIN-REDUCTION-PLAN.md`). (**STATUS: COMPLETE**)
-* **Phase 5B — Safe Plugin Reduction Execution**: Execute 6-wave plugin reduction and feature migration into `shopbiog-core` and `elessi-theme-child`. (**STATUS: NEXT UP**)
-* **STATUS:** **IN PROGRESS (5A Complete)**
+* **Phase 5B — Wave 1 Zero-Risk Cleanup**: Removed `Hello Dolly`, `Akismet`, `Slide Everything`; deactivated `All-in-One WP Migration` plugins. Active plugins reduced from 26 to 23. (**STATUS: COMPLETE**)
+* **Phase 5B — Wave 2 Simple Utility Replacements**: Activate `ShopBiOG Core` and migrate `WP Last Modified Info`. (**STATUS: NEXT UP**)
+* **STATUS:** **IN PROGRESS (5A & 5B Wave 1 Complete)**
 
 ### PHASE 6: Performance Optimization
 * Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
@@ -58,8 +59,8 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ## Current Verified Architecture Summary Notes
 
 > [!NOTE]  
-> **Verified Current State (as of Phase 5A Completion):**  
+> **Verified Current State (as of Phase 5B Wave 1 Completion):**  
 > * **Active Theme State:** Child theme `elessi-theme-child` is active (`Template: elessi-theme`, `Stylesheet: elessi-theme-child`). Theme mods synchronized 1:1 with 0 visual regressions.
+> * **Active Plugin Stack:** Reduced from 26 down to 23 active plugins. Removed `Hello Dolly`, `Akismet`, and `Slide Everything for Elementor`. `All-in-One WP Migration` tools deactivated but kept installed for maintenance.
 > * **Project Code Architecture:** Functionality scaffold established in `wp-content/plugins/shopbiog-core/`; Presentation scaffold established in `wp-content/themes/elessi-theme-child/`.
-> * **Plugin Reduction Strategy:** Blueprint established in `docs/PLUGIN-REDUCTION-PLAN.md` targeting active plugin reduction from 26 to 16–18 core plugins across 6 safe execution waves.
 > * **Working Branch:** `staging` (Clean working tree, up to date with `origin/staging`).
