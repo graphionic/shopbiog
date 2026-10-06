@@ -26,9 +26,10 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 
 ### PHASE 5: Plugin Reduction & Feature Migration
 * **Phase 5A — Plugin Reduction Blueprint**: Completed full inventory, deep-dive usage analysis of 30 plugins, replacement mapping, and 6-wave migration plan (`docs/PLUGIN-REDUCTION-PLAN.md`). (**STATUS: COMPLETE**)
-* **Phase 5B — Wave 1 Zero-Risk Cleanup**: Removed `Hello Dolly`, `Akismet`, `Slide Everything`; deactivated `All-in-One WP Migration` plugins. Active plugins reduced from 26 to 23. (**STATUS: COMPLETE**)
-* **Phase 5B — Wave 2 Simple Utility Replacements**: Activate `ShopBiOG Core` and migrate `WP Last Modified Info`. (**STATUS: NEXT UP**)
-* **STATUS:** **IN PROGRESS (5A & 5B Wave 1 Complete)**
+* **Phase 5B — Wave 1 Zero-Risk Cleanup**: Removed `Hello Dolly`, `Akismet`, `Slide Everything`; deactivated `All-in-One WP Migration` plugins. (**STATUS: COMPLETE**)
+* **Phase 5B — Wave 2 Simple Utility Replacements**: Activated `ShopBiOG Core`; migrated last modified date logic to `shopbiog-core/modules/frontend/last-modified/`; removed `WP Last Modified Info`. (**STATUS: COMPLETE**)
+* **Phase 5B — Wave 3 Elementor Addon Consolidation**: Consolidate `ElementsKit Lite` & `Header Footer Elementor (HFE)` templates into native Elessi / Elementor Pro structures. (**STATUS: NEXT UP**)
+* **STATUS:** **IN PROGRESS (5A, 5B Wave 1 & Wave 2 Complete)**
 
 ### PHASE 6: Performance Optimization
 * Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
@@ -59,8 +60,8 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ## Current Verified Architecture Summary Notes
 
 > [!NOTE]  
-> **Verified Current State (as of Phase 5B Wave 1 Completion):**  
+> **Verified Current State (as of Phase 5B Wave 2 Completion):**  
 > * **Active Theme State:** Child theme `elessi-theme-child` is active (`Template: elessi-theme`, `Stylesheet: elessi-theme-child`). Theme mods synchronized 1:1 with 0 visual regressions.
-> * **Active Plugin Stack:** Reduced from 26 down to 23 active plugins. Removed `Hello Dolly`, `Akismet`, and `Slide Everything for Elementor`. `All-in-One WP Migration` tools deactivated but kept installed for maintenance.
-> * **Project Code Architecture:** Functionality scaffold established in `wp-content/plugins/shopbiog-core/`; Presentation scaffold established in `wp-content/themes/elessi-theme-child/`.
+> * **Active Plugin Stack:** Total active plugins: 23. Activated project-owned `ShopBiOG Core` plugin (`shopbiog-core/shopbiog-core.php`). Removed third-party `WP Last Modified Info` plugin.
+> * **Project Code Architecture:** Functionality layer active in `wp-content/plugins/shopbiog-core/modules/frontend/last-modified/`; Presentation layer active in `wp-content/themes/elessi-theme-child/`.
 > * **Working Branch:** `staging` (Clean working tree, up to date with `origin/staging`).

@@ -14,9 +14,9 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 
 ### Overall Target Impact
 - **Initial Active Plugins (Phase 5A Baseline)**: 26 active (30 installed)
-- **Current Active Plugins (Post Wave 1)**: **23 active** (27 installed)
+- **Current Active Plugins (Post Wave 2)**: **23 active** (26 installed - `ShopBiOG Core` activated; `WP Last Modified Info` removed)
 - **Immediate Safe-Remove Candidates**: 4 plugins (3 removed in Wave 1)
-- **Custom-Code / Lighter Replacements**: 6 plugins
+- **Custom-Code / Lighter Replacements**: 6 plugins (1 replaced in Wave 2)
 - **Admin/Maintenance Deactivations**: 2 plugins (`All-in-One WP Migration` & `Unlimited Extension` kept installed but inactive)
 - **Target Active Plugin Count**: **16–18 active plugins** (~35% reduction in plugin overhead).
 
@@ -43,7 +43,7 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 | **Rank Math SEO** | 1.0.271.1 | Yes | SEO Engine core | Medium | Medium | Yes | `KEEP` | Active Core |
 | **Rank Math SEO PRO** | 3.0.102 | Yes | SEO Schema & Analytics | Low | Medium | Yes | `KEEP` | Active Core |
 | **Real Testimonials** | 4.0.0 | Yes | Testimonial Sliders | Medium | Low | No | `REPLACE WITH SHOPBIOG CORE` | Pending Wave 4 |
-| **ShopBiOG Core** | 1.0.0 | No | Project Functionality | Low | Low | Yes | `KEEP` | Pending Wave 2 |
+| **ShopBiOG Core** | 1.0.0 | **Yes** | Project Functionality | Low | Low | Yes | `KEEP` | **ACTIVE (Wave 2)** |
 | **Slide Everything for Elementor** | 1.7.0 | No | Elementor Swiper Slider | Medium | None | No | `REMOVE` | **REMOVED (Wave 1)** |
 | **TikTok for Business** | 1.4.2 | Yes | TikTok Catalog Sync | Low | High (Sync Jobs) | Yes | `KEEP` | Active Catalog Sync |
 | **Ultimate Addons (HFE)** | 2.9.4 | Yes | Header/Footer Builder | Medium | Medium | No | `REPLACE WITH LIGHTER SOLUTION` | Pending Wave 3 |
@@ -54,18 +54,24 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 | **WooCommerce Tax (Services)** | 3.6.3 | Yes | Automated Tax Sync | Low | Medium | Yes | `KEEP` | Active Core |
 | **Wordfence Security** | 9.0.1 | Yes | Security & Firewall | Low | High (DB Logs) | Yes | `KEEP BUT OPTIMIZE` | Active Core |
 | **WPCode Lite** | 2.3.9 | Yes | Custom Code Snippets | Low | Low | No | `REPLACE WITH SHOPBIOG CORE` | Pending Wave 5 |
-| **WP Last Modified Info** | 1.9.6 | Yes | Post Modification Dates | Low | Low | No | `REPLACE WITH SHOPBIOG CORE` | Pending Wave 2 |
+| **WP Last Modified Info** | 1.9.6 | **No** | Post Modification Dates | Low | Low | No | `REPLACE WITH SHOPBIOG CORE` | **REPLACED & REMOVED (Wave 2)** |
 | **WP Rocket** | 3.19.2.1 | No | Caching & Performance | High | Low | Yes | `KEEP BUT OPTIMIZE` | Pending Phase 6 |
 
 ---
 
-## 2. Priority Plugin Deep-Dive Analyses & Wave 1 Execution Results
+## 2. Priority Plugin Deep-Dive Analyses & Wave 1 & 2 Execution Results
 
 ### Wave 1 Verification & Deletion Results
 - **Hello Dolly**: Removed completely from codebase (`wp-content/plugins/hello.php`). Zero dependencies.
 - **Akismet Anti-spam**: Removed completely from codebase (`wp-content/plugins/akismet/`). Zero form/comment dependencies.
 - **Slide Everything for Elementor**: Deactivated and removed completely (`wp-content/plugins/slide-everything-for-elementor/`). Verified 0 active widget usages across published content.
-- **All-in-One WP Migration & Unlimited Extension**: Deactivated locally. Kept installed as `MAINTENANCE-ONLY` tools for temporary local migration and backup recovery during site modernization.
+- **All-in-One WP Migration & Unlimited Extension**: Deactivated locally. Kept installed as `MAINTENANCE-ONLY` tools for temporary local migration and backup recovery.
+
+### Wave 2 Execution Results
+- **ShopBiOG Core Activation**: Activated project-owned plugin `shopbiog-core/shopbiog-core.php` cleanly in WordPress.
+- **WP Last Modified Info Migration**: Functionality migrated to `wp-content/plugins/shopbiog-core/modules/frontend/last-modified/` (`class-last-modified.php` & `module.php`). Registered native shortcode `[shopbiog_last_modified]` and compatibility alias shortcode `[lmt-post-modified-info]`.
+- **Rank Math Schema Check**: Confirmed Rank Math SEO natively handles structured JSON-LD `dateModified` schema without duplication.
+- **Third-Party Removal**: `WP Last Modified Info` plugin deactivated and deleted from codebase (`wp-content/plugins/wp-last-modified-info/`).
 
 ---
 
@@ -80,12 +86,13 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 
 ## 4. Replacement Architecture Mapping
 
-Custom feature replacements will be placed according to strict responsibility boundaries:
+Custom feature replacements are placed according to strict responsibility boundaries:
 
 ```
 FUNCTIONALITY LAYER (wp-content/plugins/shopbiog-core/modules/)
 ├── frontend/
-│   ├── class-modified-date.php      # Replaces WP Last Modified Info (Wave 2)
+│   ├── module.php                   # Frontend module loader (Wave 2)
+│   ├── class-last-modified.php      # Replaces WP Last Modified Info (Wave 2 - ACTIVE)
 │   └── testimonials/                # Replaces Real Testimonials slider (Wave 4)
 └── integrations/
     └── class-tracking-bridge.php    # Replaces WPCode snippets #9180 & #9182 (Wave 5)
@@ -104,13 +111,12 @@ PRESENTATION LAYER (wp-content/themes/elessi-theme-child/)
 
 - **WAVE 1: Zero-Risk Unused & Maintenance Plugins** — **COMPLETE**
   - Removed `Hello Dolly`, `Akismet Anti-spam`, `Slide Everything for Elementor`.
-  - Deactivated `All-in-One WP Migration` and `Unlimited Extension` (kept installed for maintenance).
-  - Active plugin count reduced from 26 to 23.
-- **WAVE 2: Simple Utility Replacements** — **NEXT UP**
-  - Activate `ShopBiOG Core` plugin.
-  - Migrate modification date logic to `shopbiog-core/modules/frontend/class-modified-date.php`.
-  - Deactivate and remove `WP Last Modified Info`.
-- **WAVE 3: Elementor Addon Consolidation (ElementsKit & HFE)** — Pending
+  - Deactivated `All-in-One WP Migration` and `Unlimited Extension`. Active plugins: 23.
+- **WAVE 2: Simple Utility Replacements** — **COMPLETE**
+  - Activated `ShopBiOG Core`.
+  - Migrated last modified functionality to `shopbiog-core/modules/frontend/last-modified/`.
+  - Deactivated & removed `WP Last Modified Info`. Total active plugins remain: **23** (Core activated, 1 third-party removed).
+- **WAVE 3: Elementor Addon Consolidation (ElementsKit & HFE)** — **NEXT UP**
 - **WAVE 4: Forms, Testimonials & Amazon Reviews** — Pending
 - **WAVE 5: Custom Code & Snippet Consolidation** — Pending *(Requires Tracking Re-verification)*
 - **WAVE 6: Payment & Catalog Integration Review** — Pending
