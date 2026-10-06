@@ -25,10 +25,9 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **STATUS:** **COMPLETE**
 
 ### PHASE 5: Plugin Reduction & Feature Migration
-* Safely deactivate unused/legacy plugins (`All-in-One WP Migration`, `Slide Everything for Elementor`, `WooCommerce PayPal Payments`).
-* Clean up 12 unreferenced legacy HFE templates (IDs 3706–3719).
-* Consolidate custom CSS into `elessi-theme-child/assets/css/`.
-* **STATUS:** **NEXT UP**
+* **Phase 5A — Plugin Reduction Blueprint**: Completed full inventory, deep-dive usage analysis of 30 plugins, replacement mapping, and 6-wave migration plan (`docs/PLUGIN-REDUCTION-PLAN.md`). (**STATUS: COMPLETE**)
+* **Phase 5B — Safe Plugin Reduction Execution**: Execute 6-wave plugin reduction and feature migration into `shopbiog-core` and `elessi-theme-child`. (**STATUS: NEXT UP**)
+* **STATUS:** **IN PROGRESS (5A Complete)**
 
 ### PHASE 6: Performance Optimization
 * Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
@@ -59,11 +58,8 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ## Current Verified Architecture Summary Notes
 
 > [!NOTE]  
-> **Verified Current State (as of Phase 4 Completion):**  
+> **Verified Current State (as of Phase 5A Completion):**  
 > * **Active Theme State:** Child theme `elessi-theme-child` is active (`Template: elessi-theme`, `Stylesheet: elessi-theme-child`). Theme mods synchronized 1:1 with 0 visual regressions.
 > * **Project Code Architecture:** Functionality scaffold established in `wp-content/plugins/shopbiog-core/`; Presentation scaffold established in `wp-content/themes/elessi-theme-child/`.
-> * **Header & Footer:** Controlled by Elessi Theme (`nasa-core`), with NASA Static Blocks used for footer. HFE header/footer templates exist in DB but have empty display rules.
-> * **Page Builder:** Elementor Pro is critical and provides forms, popups, and WooCommerce dynamic tag widgets.
-> * **Checkout:** Overridden by FunnelKit Builder Pro (`wfacp_checkout` CPT ID 9104).
-> * **Analytics & Tracking:** PixelYourSite PRO handles primary tracking. WPCode snippet #9180 disables Meta for Woo pixel; WPCode snippet #9182 acts as AddToCart click bridge.
+> * **Plugin Reduction Strategy:** Blueprint established in `docs/PLUGIN-REDUCTION-PLAN.md` targeting active plugin reduction from 26 to 16–18 core plugins across 6 safe execution waves.
 > * **Working Branch:** `staging` (Clean working tree, up to date with `origin/staging`).
