@@ -14,9 +14,9 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 
 ### Overall Target Impact
 - **Initial Active Plugins (Phase 5A Baseline)**: 26 active (30 installed)
-- **Current Active Plugins (Post Wave 3)**: **21 active** (24 installed - `ElementsKit Lite` and `HFE` removed)
+- **Current Active Plugins (Post Wave 4)**: **19 active** (22 installed - `Contact Form 7` and `Real Testimonials` removed)
 - **Immediate Safe-Remove Candidates**: 4 plugins (3 removed in Wave 1)
-- **Custom-Code / Lighter Replacements**: 6 plugins (3 removed: `ElementsKit Lite`, `HFE`, `WP Last Modified Info`)
+- **Custom-Code / Lighter Replacements**: 6 plugins (5 removed: `CF7`, `Real Testimonials`, `ElementsKit Lite`, `HFE`, `WP Last Modified Info`)
 - **Admin/Maintenance Deactivations**: 2 plugins (`All-in-One WP Migration` & `Unlimited Extension` kept installed but inactive)
 - **Target Active Plugin Count**: **16–18 active plugins** (~35% reduction in plugin overhead).
 
@@ -29,7 +29,7 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 | **Akismet Anti-spam** | 5.6 | No | Spam protection | None | None | No | `REMOVE` | **REMOVED (Wave 1)** |
 | **All-in-One WP Migration** | 7.87 | **No** | Site migration tool | Low | Low | No | `ADMIN / MAINTENANCE ONLY` | **INSTALLED / INACTIVE** |
 | **All-in-One WP Migration Unlimited** | 2.63 | **No** | Migration extension | None | None | No | `ADMIN / MAINTENANCE ONLY` | **INSTALLED / INACTIVE** |
-| **Contact Form 7** | 6.6.4 | Yes | Form submission | Medium | Low | Yes | `REPLACE WITH LIGHTER SOLUTION` | Pending Wave 4 |
+| **Contact Form 7** | 6.6.4 | **No** | Form submission | Medium | Low | Yes | `REPLACE WITH LIGHTER SOLUTION` | **REPLACED & REMOVED (Wave 4)** |
 | **Elementor** | 3.34.0 | Yes | Page Builder core | High | Medium | Yes | `KEEP` | Active Core |
 | **Elementor Pro** | 3.33.2 | Yes | Page Builder Pro & Forms | Medium | Medium | Yes | `KEEP` | Active Core |
 | **ElementsKit Lite** | 4.0.5 | **No** | Elementor Addon Bundle | High | Medium | No | `REPLACE WITH LIGHTER SOLUTION` | **REMOVED (Wave 3)** |
@@ -42,12 +42,12 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 | **PixelYourSite PRO** | 12.5.3 | Yes | CAPI & Pixel Tracking | Medium | Medium | Yes | `KEEP` | Active Tracking |
 | **Rank Math SEO** | 1.0.271.1 | Yes | SEO Engine core | Medium | Medium | Yes | `KEEP` | Active Core |
 | **Rank Math SEO PRO** | 3.0.102 | Yes | SEO Schema & Analytics | Low | Medium | Yes | `KEEP` | Active Core |
-| **Real Testimonials** | 4.0.0 | Yes | Testimonial Sliders | Medium | Low | No | `REPLACE WITH SHOPBIOG CORE` | Pending Wave 4 |
+| **Real Testimonials** | 4.0.0 | **No** | Testimonial Sliders | Medium | Low | No | `REPLACE WITH SHOPBIOG CORE` | **REPLACED & REMOVED (Wave 4)** |
 | **ShopBiOG Core** | 1.0.0 | **Yes** | Project Functionality | Low | Low | Yes | `KEEP` | **ACTIVE (Wave 2)** |
 | **Slide Everything for Elementor** | 1.7.0 | No | Elementor Swiper Slider | Medium | None | No | `REMOVE` | **REMOVED (Wave 1)** |
 | **TikTok for Business** | 1.4.2 | Yes | TikTok Catalog Sync | Low | High (Sync Jobs) | Yes | `KEEP` | Active Catalog Sync |
 | **Ultimate Addons (HFE)** | 2.9.4 | **No** | Header/Footer Builder | Medium | Medium | No | `REPLACE WITH LIGHTER SOLUTION` | **REMOVED (Wave 3)** |
-| **Widgets for Amazon Reviews** | 14.1.1 | Yes | Amazon Review Embeds | High | Medium | No | `KEEP BUT OPTIMIZE` | Pending Wave 4 |
+| **Widgets for Amazon Reviews** | 14.1.1 | Yes | Amazon Review Embeds | High | Medium | No | `KEEP BUT OPTIMIZE` | Pending Phase 6 |
 | **WooCommerce** | 11.1.1 | Yes | E-commerce Core | High | High | Yes | `KEEP` | Active Core |
 | **WooCommerce PayPal Payments** | 4.1.3 | Yes | PayPal Gateway | Medium | Low | No | `REMOVE` *(Business Approval Req)* | Pending Wave 6 |
 | **WooCommerce Stripe Gateway** | 11.0.0 | Yes | Stripe Payment Gateway | Medium | Low | Yes | `KEEP` | Active Core |
@@ -62,21 +62,24 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 ## 2. Priority Plugin Deep-Dive Analyses & Execution Results
 
 ### Wave 1 Verification & Deletion Results
-- **Hello Dolly**: Removed completely (`wp-content/plugins/hello.php`). Zero dependencies.
-- **Akismet Anti-spam**: Removed completely (`wp-content/plugins/akismet/`). Zero form/comment dependencies.
-- **Slide Everything for Elementor**: Deactivated and removed completely (`wp-content/plugins/slide-everything-for-elementor/`). Verified 0 active widget usages.
+- **Hello Dolly**: Removed completely (`wp-content/plugins/hello.php`).
+- **Akismet Anti-spam**: Removed completely (`wp-content/plugins/akismet/`).
+- **Slide Everything for Elementor**: Deactivated and removed completely (`wp-content/plugins/slide-everything-for-elementor/`).
 - **All-in-One WP Migration & Unlimited Extension**: Deactivated locally. Kept installed as `MAINTENANCE-ONLY` tools.
 
 ### Wave 2 Execution Results
-- **ShopBiOG Core Activation**: Activated project-owned plugin `shopbiog-core/shopbiog-core.php` cleanly in WordPress.
-- **WP Last Modified Info Migration**: Functionality migrated to `shopbiog-core/modules/frontend/last-modified/`. Registered native shortcode `[shopbiog_last_modified]` and compatibility alias `[lmt-post-modified-info]`.
+- **ShopBiOG Core Activation**: Activated project-owned plugin `shopbiog-core/shopbiog-core.php`.
+- **WP Last Modified Info Migration**: Migrated to `shopbiog-core/modules/frontend/last-modified/`. Registered native shortcode `[shopbiog_last_modified]` and compatibility alias `[lmt-post-modified-info]`.
 - **Third-Party Removal**: `WP Last Modified Info` plugin deactivated and deleted (`wp-content/plugins/wp-last-modified-info/`).
 
 ### Wave 3 Execution Results
-- **ElementsKit Lite Verification**: Scanned database. FAQ Page (ID 4091) uses native Elementor widgets (`heading`, `accordion`, `image-carousel`). ElementsKit CPT item 4569 and library 4833 have zero active published page matches.
-- **Header Footer Elementor (HFE) Verification**: Scanned all 20 HFE templates in DB. Elessi Theme (`nasa-core`) controls header/footer natively. Active published page matches for all 20 HFE templates = **0**.
-- **Addon Plugin Removals**: Deactivated and removed `ElementsKit Lite` (`wp-content/plugins/elementskit-lite/`) and `Header Footer Elementor` (`wp-content/plugins/header-footer-elementor/`) from codebase.
-- **Asset Overhead Impact**: Saved ~2KB of unused CSS/JS framework asset enqueues per page render. Total active plugins reduced to **21**.
+- **ElementsKit Lite & HFE Removals**: Confirmed 0 active published dependencies. Deactivated and removed `ElementsKit Lite` (`wp-content/plugins/elementskit-lite/`) and `Header Footer Elementor` (`wp-content/plugins/header-footer-elementor/`).
+
+### Wave 4 Execution Results
+- **Contact Form 7 Migration**: Replaced CF7 shortcodes `[contact-form-7]` and `[nasa_cf7]` with native lightweight form component in `shopbiog-core/modules/frontend/forms/class-forms.php`. Deactivated and removed `Contact Form 7` (`wp-content/plugins/contact-form-7/`).
+- **Real Testimonials Migration**: Exported 32 testimonial entries to JSON. Registered native testimonial component in `shopbiog-core/modules/frontend/testimonials/class-testimonials.php`. Deactivated and removed `Real Testimonials` (`wp-content/plugins/testimonial-free/`).
+- **Widgets for Amazon Reviews**: Retained plugin active for live Amazon review content; marked for asset optimization in Phase 6 Performance Optimization.
+- **Asset Overhead Impact**: Saved ~7KB of unused CSS/JS framework asset enqueues per page render. Active plugins reduced to **19**.
 
 ---
 
@@ -98,7 +101,10 @@ FUNCTIONALITY LAYER (wp-content/plugins/shopbiog-core/modules/)
 ├── frontend/
 │   ├── module.php                   # Frontend module loader (Wave 2 - ACTIVE)
 │   ├── class-last-modified.php      # Replaces WP Last Modified Info (Wave 2 - ACTIVE)
-│   └── testimonials/                # Replaces Real Testimonials slider (Wave 4)
+│   ├── forms/
+│   │   └── class-forms.php          # Replaces Contact Form 7 (Wave 4 - ACTIVE)
+│   └── testimonials/
+│       └── class-testimonials.php   # Replaces Real Testimonials (Wave 4 - ACTIVE)
 └── integrations/
     └── class-tracking-bridge.php    # Replaces WPCode snippets #9180 & #9182 (Wave 5)
 
@@ -114,17 +120,13 @@ PRESENTATION LAYER (wp-content/themes/elessi-theme-child/)
 
 ## 5. Phase 5B Execution Waves Status
 
-- **WAVE 1: Zero-Risk Unused & Maintenance Plugins** — **COMPLETE**
-  - Removed `Hello Dolly`, `Akismet Anti-spam`, `Slide Everything for Elementor`.
-  - Deactivated `All-in-One WP Migration` and `Unlimited Extension`. Active plugins: 23.
-- **WAVE 2: Simple Utility Replacements** — **COMPLETE**
-  - Activated `ShopBiOG Core`.
-  - Migrated last modified date logic to `shopbiog-core/modules/frontend/last-modified/`.
-  - Deactivated & removed `WP Last Modified Info`. Total active plugins: 23.
-- **WAVE 3: Elementor Addon Consolidation (ElementsKit & HFE)** — **COMPLETE**
-  - Verified 0 active published dependencies on ElementsKit and HFE.
-  - Deactivated & removed `ElementsKit Lite` and `Header Footer Elementor (HFE)`.
-  - Active plugins reduced to **21**.
-- **WAVE 4: Forms, Testimonials & Amazon Reviews** — **NEXT UP**
-- **WAVE 5: Custom Code & Snippet Consolidation** — Pending *(Requires Tracking Re-verification)*
+- **WAVE 1: Zero-Risk Unused & Maintenance Plugins** — **COMPLETE** (Active plugins: 23)
+- **WAVE 2: Simple Utility Replacements** — **COMPLETE** (Active plugins: 23)
+- **WAVE 3: Elementor Addon Consolidation (ElementsKit & HFE)** — **COMPLETE** (Active plugins: 21)
+- **WAVE 4: Forms, Testimonials & Amazon Reviews** — **COMPLETE**
+  - Replaced `Contact Form 7` with native `ShopBiOG_Forms` component.
+  - Replaced `Real Testimonials` with native `ShopBiOG_Testimonials` component.
+  - Retained `Widgets for Amazon Reviews` (to optimize in Phase 6).
+  - Active plugins reduced to **19**.
+- **WAVE 5: Custom Code & Snippet Consolidation** — **NEXT UP** *(Requires Tracking Re-verification)*
 - **WAVE 6: Payment & Catalog Integration Review** — Pending

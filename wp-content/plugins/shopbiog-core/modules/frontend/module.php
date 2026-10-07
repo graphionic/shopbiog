@@ -10,6 +10,10 @@ if (!defined('ABSPATH')) {
 }
 
 require_once __DIR__ . '/class-last-modified.php';
+require_once __DIR__ . '/forms/class-forms.php';
+require_once __DIR__ . '/testimonials/class-testimonials.php';
 
-// Boot Last Modified Sub-module.
+// Boot Sub-modules.
 ShopBiOG_Last_Modified::get_instance();
+ShopBiOG_Forms::get_instance();
+ShopBiOG_Testimonials::get_instance();

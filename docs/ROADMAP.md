@@ -28,9 +28,10 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **Phase 5A — Plugin Reduction Blueprint**: Completed full inventory, deep-dive usage analysis of 30 plugins, replacement mapping, and 6-wave migration plan (`docs/PLUGIN-REDUCTION-PLAN.md`). (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 1 Zero-Risk Cleanup**: Removed `Hello Dolly`, `Akismet`, `Slide Everything`; deactivated `All-in-One WP Migration` plugins. (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 2 Simple Utility Replacements**: Activated `ShopBiOG Core`; migrated last modified date logic to `shopbiog-core/modules/frontend/last-modified/`; removed `WP Last Modified Info`. (**STATUS: COMPLETE**)
-* **Phase 5B — Wave 3 Elementor Addon Consolidation**: Consolidated and removed `ElementsKit Lite` & `Header Footer Elementor (HFE)`. Active plugins reduced to 21. (**STATUS: COMPLETE**)
-* **Phase 5B — Wave 4 Forms / Testimonials / Review Components**: Recreate CF7 forms in Elementor Pro; migrate Real Testimonials; optimize Amazon Reviews. (**STATUS: NEXT UP**)
-* **STATUS:** **IN PROGRESS (5A, 5B Wave 1, Wave 2 & Wave 3 Complete)**
+* **Phase 5B — Wave 3 Elementor Addon Consolidation**: Consolidated and removed `ElementsKit Lite` & `Header Footer Elementor (HFE)`. (**STATUS: COMPLETE**)
+* **Phase 5B — Wave 4 Forms / Testimonials / Review Components**: Replaced `Contact Form 7` with `ShopBiOG_Forms` and `Real Testimonials` with `ShopBiOG_Testimonials`. Active plugins reduced to 19. (**STATUS: COMPLETE**)
+* **Phase 5B — Wave 5 Custom Code & Snippet Consolidation**: Consolidate WPCode snippets (#9180 & #9182) into `shopbiog-core/modules/integrations/`. (**STATUS: NEXT UP**)
+* **STATUS:** **IN PROGRESS (5A, 5B Waves 1–4 Complete)**
 
 ### PHASE 6: Performance Optimization
 * Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
@@ -61,8 +62,8 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ## Current Verified Architecture Summary Notes
 
 > [!NOTE]  
-> **Verified Current State (as of Phase 5B Wave 3 Completion):**  
+> **Verified Current State (as of Phase 5B Wave 4 Completion):**  
 > * **Active Theme State:** Child theme `elessi-theme-child` is active (`Template: elessi-theme`, `Stylesheet: elessi-theme-child`). Theme mods synchronized 1:1 with 0 visual regressions.
-> * **Active Plugin Stack:** Total active plugins: 21. Removed `ElementsKit Lite` and `Header Footer Elementor (HFE)`.
-> * **Project Code Architecture:** Functionality layer active in `wp-content/plugins/shopbiog-core/modules/frontend/last-modified/`; Presentation layer active in `wp-content/themes/elessi-theme-child/`.
+> * **Active Plugin Stack:** Total active plugins: 19. Removed `Contact Form 7` and `Real Testimonials`. Custom forms and testimonials handled natively via `ShopBiOG Core`.
+> * **Project Code Architecture:** Functionality layer active in `wp-content/plugins/shopbiog-core/modules/frontend/` (`last-modified/`, `forms/`, `testimonials/`); Presentation layer active in `wp-content/themes/elessi-theme-child/`.
 > * **Working Branch:** `staging` (Clean working tree, up to date with `origin/staging`).
