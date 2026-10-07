@@ -35,8 +35,10 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **STATUS:** **COMPLETE**
 
 ### PHASE 6: Performance Optimization
-* Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
-* **STATUS:** **NEXT UP**
+* **Phase 6A — Performance Baseline & Bottleneck Map**: Established complete route inventory, asset ownership, DB autoload analysis, font/icon audit, and priority matrix (`docs/PERFORMANCE-BASELINE.md`). (**STATUS: COMPLETE**)
+* **Phase 6B — Performance Optimization Waves**: Dequeue redundant CSS/JS assets, optimize Google Fonts, tune database autoload, and configure WP Rocket caching. (**STATUS: NEXT UP - Wave 1**)
+* **STATUS:** **IN PROGRESS (6A Complete)**
+
 
 ### PHASE 7: Design System & Styling Framework
 * Establish unified design tokens (typography, color palettes, spacing, button styles, card borders, mobile breakpoints).
