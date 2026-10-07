@@ -37,8 +37,10 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ### PHASE 6: Performance Optimization
 * **Phase 6A — Performance Baseline & Bottleneck Map**: Established complete route inventory, asset ownership, DB autoload analysis, font/icon audit, and priority matrix (`docs/PERFORMANCE-BASELINE.md`). (**STATUS: COMPLETE**)
 * **Phase 6B — Wave 1 Safe Conditional Assets & DB Hygiene**: Created `shopbiog-core/modules/performance/`; conditionally dequeued unused WooCommerce block CSS; cleaned expired transients & orphaned option `yith_woocompare_fields_attrs`. (**STATUS: COMPLETE**)
-* **Phase 6B — Wave 2 Font & Icon Optimization**: Reduce Poppins font weights and enable Elementor inline SVG icons. (**STATUS: NEXT UP**)
-* **STATUS:** **IN PROGRESS (6A & 6B Wave 1 Complete)**
+* **Phase 6B — Wave 2 Font & Icon Optimization**: Filtered Google Fonts Poppins weights to `:400,500,600,700,800,900` (eliminating 8 unused italic variants); added Google Font preconnect hints; activated Elementor inline SVG icons. (**STATUS: COMPLETE**)
+* **Phase 6B — Wave 3 Elementor DOM & Rendering Optimization**: Enable Elementor DOM optimization and element caching. (**STATUS: NEXT UP**)
+* **STATUS:** **IN PROGRESS (6A & 6B Waves 1–2 Complete)**
+
 
 
 
