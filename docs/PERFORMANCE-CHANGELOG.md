@@ -231,9 +231,44 @@ This document tracks all implemented performance optimizations, asset dequeues, 
 
 ### 3. Verification & Safety
 
-- **Pending Background Jobs**: Verified Meta catalog log batching (`facebook_for_woocommerce_process_logs_batch`), Google product sync (`gla/jobs/...`), TikTok catalog sync, and WooCommerce order cancellation actions remain pending and active.
-- **Payment & Checkout**: Stripe and PayPal gateway configurations intact; FunnelKit checkout pages (9104–9108) fully functional.
-- **Frontend Performance**: All core routes respond with HTTP 200; 0 PHP errors.
+---
+
+## Phase 6B — Wave 5.1: Cron Safety Reconciliation Before WP Rocket
+
+- **Implementation Date**: October 7, 2026
+- **Branch**: `staging`
+- **Target Locations**:
+  - Database: Local Mysqldump Backup (`99.94 MB`, `2026-10-07 08:56:05` UTC)
+  - Plugin: `wp-content/plugins/shopbiog-core/modules/admin/class-database-maintenance.php`
+  - Documentation: `docs/DATABASE-MAINTENANCE.md`
+
+---
+
+### 1. Reconciled Cron Audit & Findings
+
+1. **Local Database Backup Confirmation**:
+   - Fresh local database backup generated: `scratch/backup_shopbiog_20261007.sql` (`99.94 MB`, 141 tables).
+2. **Wordfence Security (`wordfence_start_scheduled_scan`)**:
+   - Verified active. Automatic scan scheduling mode (`auto`) confirmed in Wordfence scanner options.
+3. **WordPress Core Privacy (`wp_privacy_personal_data_cleanup_requests`)**:
+   - Native core privacy exporter cleanup `wp_privacy_delete_old_export_files` confirmed active. Non-standard third-party hook confirmed orphaned.
+4. **Rank Math SEO (`rank_math/redirection/clean_trashed`)**:
+   - Redirections module confirmed active. Daily trashed redirection cleanup confirmed scheduled.
+5. **WP Rocket Inactive Plugin Hooks**:
+   - Confirmed that inactive WP Rocket cron hooks (`rocket_*`) re-register automatically upon plugin activation in Wave 6.
+
+---
+
+### 2. Canonical Database Measurement
+
+- **Total DB Size**: `128.69 MB` across 141 tables
+- **`wp_options`**: `3.56 MB`
+- **`wp_actionscheduler_actions`**: `6.27 MB` (5,701 rows)
+- **`wp_actionscheduler_logs`**: `3.39 MB` (16,928 rows)
+- **Total Action Scheduler Tables Size**: `9.72 MB`
+- **`wp_woocommerce_sessions`**: `0.05 MB` (3 rows)
+- **Wordfence Tables Combined Size**: `1.31 MB`
+
 
 
 

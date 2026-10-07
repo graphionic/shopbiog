@@ -41,8 +41,9 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **Phase 6B — Wave 3 Elementor DOM & Rendering Optimization**: Activated `e_optimized_markup` (-101 DOM nodes); evaluated `e_element_cache` -> DEFERRED (safeguarding dynamic ecommerce data); verified popups, forms, FunnelKit, and responsive layouts. (**STATUS: COMPLETE**)
 * **Phase 6B — Wave 4 LCP / CLS Image & Gallery Optimization**: Created `ShopBiOG_Image_Performance` module enforcing `fetchpriority="high"` on LCP images, lazy-load exclusions, intrinsic dimension enforcement, and CSS layout aspect-ratio reservation for product gallery (`595/760`) and catalog cards (`350/447`). (**STATUS: COMPLETE**)
 * **Phase 6B — Wave 5 Action Scheduler / Background Task & Database Maintenance**: Created `ShopBiOG_Database_Maintenance` admin module; purged 183 completed, 24 canceled, and 295 resolved GLA failed actions older than 30 days via Action Scheduler API; unscheduled 14 orphaned WP-Cron hooks; created `docs/DATABASE-MAINTENANCE.md`. (**STATUS: COMPLETE**)
+* **Phase 6B — Wave 5.1 Cron Safety Reconciliation**: Created 99.94 MB SQL backup; reconciled Wordfence, Core, and Rank Math crons; established canonical DB measurement (`128.69 MB`). (**STATUS: COMPLETE**)
 * **Phase 6B — Wave 6 Controlled WP Rocket Activation & Cache Configuration**: Configure safe caching rules with cart, checkout, CAPI, and payment exclusions. (**STATUS: NEXT UP**)
-* **STATUS:** **IN PROGRESS (6A & 6B Waves 1–5 Complete)**
+* **STATUS:** **IN PROGRESS (6A & 6B Waves 1–5.1 Complete)**
 
 
 

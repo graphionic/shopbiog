@@ -116,7 +116,7 @@ class ShopBiOG_Database_Maintenance {
     }
 
     /**
-     * Unschedule registered WP-Cron events that have no active action callbacks.
+     * Unschedule registered WP-Cron events that belong exclusively to confirmed uninstalled plugins.
      *
      * @return array List of unscheduled cron hooks.
      */
@@ -124,10 +124,21 @@ class ShopBiOG_Database_Maintenance {
         $cron = _get_cron_array();
         $unscheduled = [];
 
+        // Confirmed uninstalled plugin cron hooks
+        $confirmed_orphaned_hooks = [
+            'wplmi/fetch_plugin_data' => true,
+            'wpcode_usage_tracking_cron' => true,
+            'ai1wm_storage_cleanup' => true,
+            'wpseo-reindex' => true,
+            'wpseo_permalink_structure_check' => true,
+            'pum_weekly_scheduled_events' => true,
+            'mnx_daily_cron_event' => true,
+        ];
+
         if (is_array($cron)) {
             foreach ($cron as $timestamp => $cronhooks) {
                 foreach ($cronhooks as $hook => $events) {
-                    if (!has_action($hook)) {
+                    if (isset($confirmed_orphaned_hooks[$hook])) {
                         foreach ($events as $key => $event) {
                             wp_unschedule_event($timestamp, $hook, $event['args']);
                             $unscheduled[] = $hook;
@@ -139,6 +150,7 @@ class ShopBiOG_Database_Maintenance {
 
         return array_unique($unscheduled);
     }
+
 
     /**
      * Clean expired transients from wp_options.
