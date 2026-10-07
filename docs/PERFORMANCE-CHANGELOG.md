@@ -87,3 +87,59 @@ This document tracks all implemented performance optimizations, asset dequeues, 
 | **Elementor Font Icon Delivery** | Full font files (`default`) | Inline SVGs (`active`) | Reduced icon font requests |
 | **Visual / CLS Regression** | Zero shift | Zero shift | **100% Visual Parity Confirmed** |
 
+---
+
+## Phase 6B — Wave 3: Elementor DOM & Rendering Optimization
+
+- **Implementation Date**: October 7, 2026
+- **Branch**: `staging`
+- **Target Location**: Database Configuration & Elementor Engine
+
+---
+
+### 1. Implemented Optimizations & Experiment Decisions
+
+1. **Elementor Optimized Markup (`e_optimized_markup`) -> ACTIVE**:
+   - Analyzed theme & plugin CSS selector dependencies (0 dependencies on wrapper markup found).
+   - Activated `e_optimized_markup` independently.
+   - Cleared and rebuilt Elementor CSS file cache (`\Elementor\Plugin::$instance->files_manager->clear_cache()`).
+   - Reduced wrapper HTML `div` bloat across all Elementor-built pages.
+
+2. **Elementor Element Caching (`e_element_cache`) -> DEFERRED**:
+   - Inspected Elementor Element Cache module architecture.
+   - Identified high risk of caching dynamic WooCommerce product prices, cart fragments, stock badges, and user session nonces.
+   - Explicitly DEFERRED per performance safety rules ("Performance correctness is more important than enabling every optimization").
+
+3. **Elementor Improved Asset Loading**:
+   - Confirmed native core capability in Elementor 3.34.0.
+
+4. **CSS Print Method**:
+   - Verified `external` (External CSS File) is active and serving 6 clean generated files (50.15 KB total).
+
+5. **Motion Effects / Animations (`e-animations`) Audit**:
+   - Confirmed **0 published posts/templates** use entrance animations.
+
+---
+
+### 2. Measured Before / After DOM & HTML Reduction Comparison
+
+| Route | Baseline DOM Nodes | Post-Wave 3 DOM Nodes | DOM Node Delta | Widget Containers | HTML Size Reduction |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Homepage** | 1,352 | **1,297** | **-55 nodes** | 51 -> 2 | **-3,042 Bytes (~3.04 KB)** |
+| **Shop Archive** | 1,701 | **1,675** | **-26 nodes** | 26 -> 0 | **-1,430 Bytes (~1.43 KB)** |
+| **FAQ Page** | 824 | **816** | **-8 nodes** | 14 -> 6 | **-422 Bytes** |
+| **Simple Product** | 1,267 | **1,257** | **-10 nodes** | 10 -> 0 | **-534 Bytes** |
+| **Variable Product** | 1,166 | **1,164** | **-2 nodes** | 2 -> 0 | **-86 Bytes** |
+| **TOTAL** | **6,310** | **6,209** | **-101 nodes** | **103 -> 8** | **-5,514 Bytes** |
+
+---
+
+### 3. Verification & Functional Integrity
+
+- **Elementor Popups (IDs 4948, 4963)**: Verified trigger behavior, close controls, and popup metadata.
+- **ShopBiOG Custom Form**: Verified `[shopbiog_contact_form]` rendering (2,338 B) with fields, honeypot, labels, and validation intact.
+- **FunnelKit Checkout (IDs 9104–9108)**: Verified checkout, order bump, upsells, and thank-you pages operate with zero side-effects.
+- **Responsive Parity**: Verified zero container collapse or layout shifting on Desktop, Tablet, and Mobile.
+- **JS Errors**: 0 console/runtime exceptions.
+
+

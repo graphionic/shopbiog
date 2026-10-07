@@ -137,9 +137,11 @@ This document establishes the comprehensive performance baseline, asset inventor
 ## 10. Elementor Experiments Audit
 
 - **Container (Flexbox Layouts)**: `active`
-- **DOM Optimization (`e_optimized_markup`)**: `default` (Candidate for activation in Wave 1/2)
-- **Inline Font Icons (`e_font_icon_svg`)**: `default` (Candidate for activation)
-- **Element Cache (`e_element_cache`)**: `default` (Candidate for activation)
+- **DOM Optimization (`e_optimized_markup`)**: `active` (Activated in Phase 6B Wave 3; reduced 101 DOM nodes across core routes)
+- **Inline Font Icons (`e_font_icon_svg`)**: `active` (Activated in Phase 6B Wave 2)
+- **Element Cache (`e_element_cache`)**: `DEFERRED` (Deferred per business/performance rule to avoid caching dynamic WooCommerce price, stock, or cart data)
+- **Improved Asset Loading (`e_optimized_assets`)**: `native core` (Standardized core behavior in Elementor 3.34.0)
+- **CSS Print Method**: `external` (External CSS file delivery enabled)
 
 ---
 
@@ -162,7 +164,7 @@ This document establishes the comprehensive performance baseline, asset inventor
 | **Purge Expired Transients & Stale Autoload Options** | **P0** | Reduces DB autoload size by ~25KB | Low | Low | All Routes | Database / `ShopBiOG Core` |
 | **Optimize Google Fonts Variants** | **P0** | Reduces font payload by ~60% | Low | Low | All Routes | `elessi-theme-child` / `ShopBiOG Core` |
 | **Disable `wc-cart-fragments` on Non-Commerce Pages** | **P0** | Prevents AJAX polling on static pages | Low | Low | Non-Commerce Pages | `shopbiog-core/modules/performance/` |
-| **Enable Elementor DOM & SVG Experiments** | **P1** | Reduces HTML DOM depth and icon requests | Low | Medium | Page Builder Pages | Elementor Settings |
+| **Enable Elementor DOM & SVG Experiments** | **P1** | Reduced HTML DOM depth by 101 nodes | Low | Medium | Page Builder Pages | Elementor Settings |
 | **Purge Failed/Completed Action Scheduler Logs** | **P1** | Reduces DB table size & query latency | Low | Low | Admin / Background | Database |
 | **LCP Image Priority & Dimension Hints** | **P1** | Improves LCP score by ~300ms | Medium | Medium | Homepage / Single Product | `elessi-theme-child` |
 | **Configure & Activate WP Rocket Caching** | **P2** | Dramatically improves TTFB & page load speed | Medium | High | All Public Routes | WP Rocket Settings |
@@ -171,17 +173,19 @@ This document establishes the comprehensive performance baseline, asset inventor
 
 ## 13. Proposed Phase 6 Implementation Waves
 
-- **Wave 1: Safe Conditional Asset Loading & DB Autoload Cleanup**
+- **Wave 1: Safe Conditional Asset Loading & DB Autoload Cleanup** (**COMPLETE**)
   - Purge stale autoload options (`yith_woocompare_fields_attrs`) and expired transients.
   - Conditionally unload non-commerce scripts (`wc-cart-fragments`) on static pages.
-- **Wave 2: Font & Icon Optimization**
-  - Reduce Poppins font weights to required variants (`400, 500, 600, 700`).
+- **Wave 2: Font & Icon Optimization** (**COMPLETE**)
+  - Reduce Poppins font weights to required variants (`400, 500, 600, 700, 800, 900`).
   - Enable Elementor Inline Font Icons (`e_font_icon_svg`).
-- **Wave 3: Elementor Experiment Tuning & DOM Optimization**
-  - Enable Elementor DOM optimization and element caching.
-- **Wave 4: LCP / CLS Image & Gallery Optimization**
+- **Wave 3: Elementor Experiment Tuning & DOM Optimization** (**COMPLETE**)
+  - Activated `e_optimized_markup` alone; eliminated wrapper div bloat (-101 total DOM nodes).
+  - Evaluated `e_element_cache` -> DEFERRED (safeguarding dynamic WooCommerce price/stock/cart data).
+- **Wave 4: LCP / CLS Image & Gallery Optimization** (**NEXT UP**)
   - Add explicit dimensions and high priority tags to hero/LCP images.
 - **Wave 5: Action Scheduler Log Cleanup & Background Task Tuning**
   - Purge completed/failed Action Scheduler jobs and tune log retention.
 - **Wave 6: Controlled WP Rocket Activation & Exclusion Setup**
   - Configure safe caching rules with cart, checkout, CAPI, and payment exclusions.
+
