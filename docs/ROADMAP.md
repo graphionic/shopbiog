@@ -31,11 +31,12 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **Phase 5B — Wave 3 Elementor Addon Consolidation**: Consolidated and removed `ElementsKit Lite` & `Header Footer Elementor (HFE)`. (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 4 Forms / Testimonials / Review Components**: Replaced `Contact Form 7` with `ShopBiOG_Forms` and `Real Testimonials` with `ShopBiOG_Testimonials`. Active plugins reduced to 19. (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 5 Custom Code & Snippet Consolidation**: Consolidate WPCode snippets (#9180 & #9182) into `shopbiog-core/modules/integrations/`; deactivate and delete `WPCode Lite`. Active plugins reduced to 18. (**STATUS: COMPLETE**)
-* **STATUS:** **IN PROGRESS (5A, 5B Waves 1–5 Complete)**
+* **Phase 5B — Wave 6 Payment & Catalog Integration Review**: Reviewed PayPal, Meta, Google, TikTok, and WooCommerce Tax integrations. Catalog infrastructure retained; PayPal classified as ready for removal. (**STATUS: COMPLETE**)
+* **STATUS:** **COMPLETE**
 
 ### PHASE 6: Performance Optimization
 * Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
-* **STATUS:** **PENDING**
+* **STATUS:** **NEXT UP**
 
 ### PHASE 7: Design System & Styling Framework
 * Establish unified design tokens (typography, color palettes, spacing, button styles, card borders, mobile breakpoints).
@@ -62,9 +63,10 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ## Current Verified Architecture Summary Notes
 
 > [!NOTE]  
-> **Verified Current State (as of Phase 5B Wave 5 Completion):**  
+> **Verified Current State (as of Phase 5 Completion):**  
 > * **Active Theme State:** Child theme `elessi-theme-child` is active (`Template: elessi-theme`, `Stylesheet: elessi-theme-child`). Theme mods synchronized 1:1 with 0 visual regressions.
-> * **Active Plugin Stack:** Total active plugins: **18**. Removed `WPCode Lite`. Meta pixel deduplication handled natively via `ShopBiOG Core` (`shopbiog-core/modules/integrations/class-meta-integration.php`).
+> * **Active Plugin Stack:** Total active plugins: **18**. Removed 7 third-party plugins (`Hello Dolly`, `Akismet`, `Slide Everything`, `WP Last Modified Info`, `ElementsKit Lite`, `HFE`, `Contact Form 7`, `Real Testimonials`, `WPCode Lite`). Reduced from 26 to 18 active plugins.
 > * **Project Code Architecture:** Functionality layer active in `wp-content/plugins/shopbiog-core/modules/` (`frontend/`, `integrations/`); Presentation layer active in `wp-content/themes/elessi-theme-child/`.
 > * **Working Branch:** `staging` (Clean working tree, up to date with `origin/staging`).
+
 
