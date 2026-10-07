@@ -3,3 +3,29 @@
  *
  * Responsibilities: Single Product Presentation, Cart Styling, Checkout Visuals
  */
+
+/* Reserve single product gallery container aspect ratio before JS gallery init */
+.woocommerce-product-gallery .woocommerce-product-gallery__image,
+.product-gallery .main-images .woocommerce-product-gallery__image {
+    aspect-ratio: 595 / 760;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Ensure secondary gallery thumbnails reserve fixed portrait bounds */
+.woocommerce-product-gallery .flex-control-thumbs li img,
+.product-gallery .thumbnails img {
+    aspect-ratio: 117 / 150;
+    object-fit: cover;
+}
+
+/* Reserve catalog product card image aspect ratio to prevent grid jumps */
+.product-item .product-image img,
+ul.products li.product .product-image img {
+    aspect-ratio: 350 / 447;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+

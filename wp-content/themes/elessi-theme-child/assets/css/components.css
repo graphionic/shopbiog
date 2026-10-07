@@ -3,3 +3,21 @@
  *
  * Responsibilities: Reusable UI Component Styles (Buttons, Cards, Modals, Badges)
  */
+
+/* Prevent mini-cart counter reflow during async cart-fragment updates */
+.cart-count,
+.mini-cart-counter,
+.cart-total,
+.nasa-mini-cart-count {
+    min-width: 1.5rem;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Feature logo swiper image dimension stability */
+.swiper-slide-image {
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+

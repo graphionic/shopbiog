@@ -182,10 +182,13 @@ This document establishes the comprehensive performance baseline, asset inventor
 - **Wave 3: Elementor Experiment Tuning & DOM Optimization** (**COMPLETE**)
   - Activated `e_optimized_markup` alone; eliminated wrapper div bloat (-101 total DOM nodes).
   - Evaluated `e_element_cache` -> DEFERRED (safeguarding dynamic WooCommerce price/stock/cart data).
-- **Wave 4: LCP / CLS Image & Gallery Optimization** (**NEXT UP**)
-  - Add explicit dimensions and high priority tags to hero/LCP images.
-- **Wave 5: Action Scheduler Log Cleanup & Background Task Tuning**
+- **Wave 4: LCP / CLS Image & Gallery Optimization** (**COMPLETE**)
+  - Created `ShopBiOG_Image_Performance` module enforcing `fetchpriority="high"` and lazy-loading exclusion on true LCP hero & product images.
+  - Enforced intrinsic width/height attributes for icon images, certificates, and 404 placeholder.
+  - Added CSS layout aspect-ratio reservation for product gallery (`595 / 760`), thumbnails (`117 / 150`), product cards (`350 / 447`), and header cart badge counters (`min-width: 1.5rem`), eliminating CLS during JS initialization.
+- **Wave 5: Action Scheduler Log Cleanup & Background Task Tuning** (**NEXT UP**)
   - Purge completed/failed Action Scheduler jobs and tune log retention.
 - **Wave 6: Controlled WP Rocket Activation & Exclusion Setup**
   - Configure safe caching rules with cart, checkout, CAPI, and payment exclusions.
+
 

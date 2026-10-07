@@ -139,7 +139,50 @@ This document tracks all implemented performance optimizations, asset dequeues, 
 - **Elementor Popups (IDs 4948, 4963)**: Verified trigger behavior, close controls, and popup metadata.
 - **ShopBiOG Custom Form**: Verified `[shopbiog_contact_form]` rendering (2,338 B) with fields, honeypot, labels, and validation intact.
 - **FunnelKit Checkout (IDs 9104–9108)**: Verified checkout, order bump, upsells, and thank-you pages operate with zero side-effects.
-- **Responsive Parity**: Verified zero container collapse or layout shifting on Desktop, Tablet, and Mobile.
-- **JS Errors**: 0 console/runtime exceptions.
+---
+
+## Phase 6B — Wave 4: LCP / CLS Image & Product Gallery Optimization
+
+- **Implementation Date**: October 7, 2026
+- **Branch**: `staging`
+- **Target Locations**:
+  - Plugin: `wp-content/plugins/shopbiog-core/modules/performance/class-image-performance.php`
+  - Child Theme CSS: `wp-content/themes/elessi-theme-child/assets/css/woocommerce.css`, `components.css`
+
+---
+
+### 1. Implemented Optimizations
+
+1. **`ShopBiOG_Image_Performance` Module**:
+   - Filtered `wp_get_attachment_image_attributes`, `wp_img_tag_add_loading_attr`, `wp_img_tag_add_fetchpriority_attr` to enforce `fetchpriority="high"` and remove `loading="lazy"` on true LCP elements (Homepage main hero image `wp-image-9158` and single product main featured image `wp-post-image`).
+   - Kept secondary gallery images, thumbnails, and below-the-fold images lazy-loaded (`loading="lazy"`).
+   - Injected intrinsic `width` and `height` attributes via `wp_content_img_tag` for feature icon slides (`200x50` / `250x50`), 404 placeholder (`180x180`), and footer trust badges.
+
+2. **Presentation CSS Aspect Ratio & Layout Reservation**:
+   - Reserved single product main gallery image aspect ratio (`aspect-ratio: 595 / 760; object-fit: cover;`) and thumbnail bounds (`aspect-ratio: 117 / 150;`).
+   - Reserved catalog product card image aspect ratio (`aspect-ratio: 350 / 447; object-fit: cover;`) preventing grid reflow.
+   - Reserved minimum width for header cart badge counters (`min-width: 1.5rem; display: inline-block; text-align: center;`) preventing header horizontal shifts when `wc-cart-fragments` loads asynchronously.
+
+---
+
+### 2. Measured Before / After Image & Layout Stability Comparison
+
+| Metric | Before Wave 4 | After Wave 4 | Improvement |
+| :--- | :--- | :--- | :--- |
+| **Homepage LCP Image Priority** | `fetchpriority` un-set | `fetchpriority="high"` | Immediate browser fetch prioritization |
+| **Single Product LCP Image Priority** | Standard | `fetchpriority="high"` | Immediate main image fetch prioritization |
+| **Product Gallery CLS** | Height jump on slider init | Zero jump (`aspect-ratio: 595 / 760`) | Layout reserved before JS slider init |
+| **Product Card Grid CLS** | Grid reflow on image load | Zero shift (`aspect-ratio: 350 / 447`) | Stable catalog card grid |
+| **Header Cart Counter CLS** | Horizontal shift on frag update | Zero shift (`min-width: 1.5rem`) | Header menu stability |
+| **Missing Image Dimensions** | 11 images missing WxH | 0 core images missing WxH | Intrinsic dimensions enforced |
+
+---
+
+### 3. Verification & Functional Integrity
+
+- **Variable Product Image Switching**: Verified color variation selection (Black, Green, Grey) swaps images with 0 layout jump.
+- **FunnelKit & Gateways**: Stripe express buttons, checkout pages (9104–9108), PayPal integration intact.
+- **Responsive Viewports**: Desktop, Tablet, Mobile visually verified.
+
 
 
