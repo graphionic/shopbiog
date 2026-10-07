@@ -269,6 +269,37 @@ This document tracks all implemented performance optimizations, asset dequeues, 
 - **`wp_woocommerce_sessions`**: `0.05 MB` (3 rows)
 - **Wordfence Tables Combined Size**: `1.31 MB`
 
+---
+
+## Phase 6B — Wave 6: Controlled WP Rocket Activation & Cache Configuration
+
+- **Implementation Date**: October 7, 2026
+- **Branch**: `staging`
+- **Target Locations**:
+  - Plugin Activation: `wp-rocket/wp-rocket.php` (v3.19.2.1)
+  - Code Module: `wp-content/plugins/shopbiog-core/modules/performance/class-cache-compatibility.php`
+  - Documentation: `docs/WP-ROCKET-CONFIGURATION.md`, `docs/PERFORMANCE-BASELINE.md`, `docs/PERFORMANCE-CHANGELOG.md`, `docs/ROADMAP.md`
+
+---
+
+### 1. Key Configuration & Safety Implementations
+
+1. **Native Activation**: Activated WP Rocket natively (`3.19.2.1`). Generated `advanced-cache.php` and `localhost.shopbiog.php` config.
+2. **Controlled Setting Matrix**:
+   - Safe anonymous page cache enabled (`cache_mobile: 1`).
+   - Logged-in caching disabled (`cache_logged_user: 0`).
+   - Aggressive JS deferral, RUCSS, minification, and image lazyloading disabled to safeguard Elessi, Elementor, WooCommerce variations, and Wave 4 LCP priority rules.
+3. **Dynamic Cache Exclusions**:
+   - URI patterns excluded: `/cart/(.*)`, `/shopping-cart/(.*)`, `/checkout/(.*)`, `/my-account/(.*)`, `/checkouts/(.*)`, `/offer/(.*)`, `/upsell/(.*)`, `/thank-you/(.*)`, `/wp-json/(.*)`, `/wc-api/(.*)`.
+   - Dynamic cookie bypass: `woocommerce_items_in_cart`, `woocommerce_cart_hash`, `wp_woocommerce_session_`.
+4. **`ShopBiOG_Cache_Compatibility` Module**:
+   - Integrated into `shopbiog-core` to enforce URI/cookie exclusions and protect `fetchpriority="high"` LCP images.
+5. **Empirical Verification**:
+   - Homepage second request served from cache (`/cache/wp-rocket/index.html`) with **35.7% response speedup** on local WAMP.
+   - Dynamic session requests containing cart cookies cleanly bypass page cache.
+   - Stripe, PayPal, FunnelKit, PYS, Elementor, and custom forms remain 100% functional.
+
+
 
 
 

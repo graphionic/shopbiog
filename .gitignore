@@ -9,6 +9,7 @@
 /wp-content/wflogs/
 /wp-content/ai1wm-backups/
 /wp-content/wp-rocket-config/
+/wp-content/advanced-cache.php
 
 # Migration backups & Database Dumps
 *.wpress

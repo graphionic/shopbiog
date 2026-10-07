@@ -12,6 +12,8 @@ This document establishes the comprehensive performance baseline, asset inventor
 - **Action Scheduler Queue**: 4,870 completed, 617 canceled, 404 failed, 28 pending jobs.
 - **Image Optimization Level**: High (Primary product images delivered in WebP).
 - **Primary Optimization Goals**: Reduce Core Web Vitals (LCP, CLS, INP), eliminate redundant CSS/JS enqueues, optimize database autoload overhead, and tune caching without breaking checkout or tracking integrity.
+- **WP Rocket Page Caching Baseline (Wave 6)**: Active with safe anonymous page caching (`cache_mobile: 1`), dynamic cookie bypass (`woocommerce_items_in_cart`, `wp_woocommerce_session_`), URI exclusions (`/cart/`, `/shopping-cart/`, `/checkout/`, `/my-account/`, `/checkouts/`, `/offer/`, `/wp-json/`, `/wc-api/`), and `ShopBiOG_Cache_Compatibility` layer.
+
 
 ---
 
