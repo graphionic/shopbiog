@@ -28,8 +28,9 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **Phase 5A — Plugin Reduction Blueprint**: Completed full inventory, deep-dive usage analysis of 30 plugins, replacement mapping, and 6-wave migration plan (`docs/PLUGIN-REDUCTION-PLAN.md`). (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 1 Zero-Risk Cleanup**: Removed `Hello Dolly`, `Akismet`, `Slide Everything`; deactivated `All-in-One WP Migration` plugins. (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 2 Simple Utility Replacements**: Activated `ShopBiOG Core`; migrated last modified date logic to `shopbiog-core/modules/frontend/last-modified/`; removed `WP Last Modified Info`. (**STATUS: COMPLETE**)
-* **Phase 5B — Wave 3 Elementor Addon Consolidation**: Consolidate `ElementsKit Lite` & `Header Footer Elementor (HFE)` templates into native Elessi / Elementor Pro structures. (**STATUS: NEXT UP**)
-* **STATUS:** **IN PROGRESS (5A, 5B Wave 1 & Wave 2 Complete)**
+* **Phase 5B — Wave 3 Elementor Addon Consolidation**: Consolidated and removed `ElementsKit Lite` & `Header Footer Elementor (HFE)`. Active plugins reduced to 21. (**STATUS: COMPLETE**)
+* **Phase 5B — Wave 4 Forms / Testimonials / Review Components**: Recreate CF7 forms in Elementor Pro; migrate Real Testimonials; optimize Amazon Reviews. (**STATUS: NEXT UP**)
+* **STATUS:** **IN PROGRESS (5A, 5B Wave 1, Wave 2 & Wave 3 Complete)**
 
 ### PHASE 6: Performance Optimization
 * Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
@@ -60,8 +61,8 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ## Current Verified Architecture Summary Notes
 
 > [!NOTE]  
-> **Verified Current State (as of Phase 5B Wave 2 Completion):**  
+> **Verified Current State (as of Phase 5B Wave 3 Completion):**  
 > * **Active Theme State:** Child theme `elessi-theme-child` is active (`Template: elessi-theme`, `Stylesheet: elessi-theme-child`). Theme mods synchronized 1:1 with 0 visual regressions.
-> * **Active Plugin Stack:** Total active plugins: 23. Activated project-owned `ShopBiOG Core` plugin (`shopbiog-core/shopbiog-core.php`). Removed third-party `WP Last Modified Info` plugin.
+> * **Active Plugin Stack:** Total active plugins: 21. Removed `ElementsKit Lite` and `Header Footer Elementor (HFE)`.
 > * **Project Code Architecture:** Functionality layer active in `wp-content/plugins/shopbiog-core/modules/frontend/last-modified/`; Presentation layer active in `wp-content/themes/elessi-theme-child/`.
 > * **Working Branch:** `staging` (Clean working tree, up to date with `origin/staging`).

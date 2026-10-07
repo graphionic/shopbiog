@@ -14,9 +14,9 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 
 ### Overall Target Impact
 - **Initial Active Plugins (Phase 5A Baseline)**: 26 active (30 installed)
-- **Current Active Plugins (Post Wave 2)**: **23 active** (26 installed - `ShopBiOG Core` activated; `WP Last Modified Info` removed)
+- **Current Active Plugins (Post Wave 3)**: **21 active** (24 installed - `ElementsKit Lite` and `HFE` removed)
 - **Immediate Safe-Remove Candidates**: 4 plugins (3 removed in Wave 1)
-- **Custom-Code / Lighter Replacements**: 6 plugins (1 replaced in Wave 2)
+- **Custom-Code / Lighter Replacements**: 6 plugins (3 removed: `ElementsKit Lite`, `HFE`, `WP Last Modified Info`)
 - **Admin/Maintenance Deactivations**: 2 plugins (`All-in-One WP Migration` & `Unlimited Extension` kept installed but inactive)
 - **Target Active Plugin Count**: **16–18 active plugins** (~35% reduction in plugin overhead).
 
@@ -32,7 +32,7 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 | **Contact Form 7** | 6.6.4 | Yes | Form submission | Medium | Low | Yes | `REPLACE WITH LIGHTER SOLUTION` | Pending Wave 4 |
 | **Elementor** | 3.34.0 | Yes | Page Builder core | High | Medium | Yes | `KEEP` | Active Core |
 | **Elementor Pro** | 3.33.2 | Yes | Page Builder Pro & Forms | Medium | Medium | Yes | `KEEP` | Active Core |
-| **ElementsKit Lite** | 4.0.5 | Yes | Elementor Addon Bundle | High | Medium | No | `REPLACE WITH LIGHTER SOLUTION` | Pending Wave 3 |
+| **ElementsKit Lite** | 4.0.5 | **No** | Elementor Addon Bundle | High | Medium | No | `REPLACE WITH LIGHTER SOLUTION` | **REMOVED (Wave 3)** |
 | **Elessi Core (Nasa Core)** | 6.5.2 | Yes | Theme engine & swatches | High | High | Yes | `KEEP` | Active Core |
 | **FunnelKit Funnel Builder** | 3.15.0.5 | Yes | Sales Funnels core | Medium | Medium | Yes | `KEEP` | Active Core |
 | **FunnelKit Funnel Builder Pro** | 3.15.0.6 | Yes | Checkout & Order Bumps | High | High | Yes | `KEEP` | Active Core |
@@ -46,7 +46,7 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 | **ShopBiOG Core** | 1.0.0 | **Yes** | Project Functionality | Low | Low | Yes | `KEEP` | **ACTIVE (Wave 2)** |
 | **Slide Everything for Elementor** | 1.7.0 | No | Elementor Swiper Slider | Medium | None | No | `REMOVE` | **REMOVED (Wave 1)** |
 | **TikTok for Business** | 1.4.2 | Yes | TikTok Catalog Sync | Low | High (Sync Jobs) | Yes | `KEEP` | Active Catalog Sync |
-| **Ultimate Addons (HFE)** | 2.9.4 | Yes | Header/Footer Builder | Medium | Medium | No | `REPLACE WITH LIGHTER SOLUTION` | Pending Wave 3 |
+| **Ultimate Addons (HFE)** | 2.9.4 | **No** | Header/Footer Builder | Medium | Medium | No | `REPLACE WITH LIGHTER SOLUTION` | **REMOVED (Wave 3)** |
 | **Widgets for Amazon Reviews** | 14.1.1 | Yes | Amazon Review Embeds | High | Medium | No | `KEEP BUT OPTIMIZE` | Pending Wave 4 |
 | **WooCommerce** | 11.1.1 | Yes | E-commerce Core | High | High | Yes | `KEEP` | Active Core |
 | **WooCommerce PayPal Payments** | 4.1.3 | Yes | PayPal Gateway | Medium | Low | No | `REMOVE` *(Business Approval Req)* | Pending Wave 6 |
@@ -59,19 +59,24 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 
 ---
 
-## 2. Priority Plugin Deep-Dive Analyses & Wave 1 & 2 Execution Results
+## 2. Priority Plugin Deep-Dive Analyses & Execution Results
 
 ### Wave 1 Verification & Deletion Results
-- **Hello Dolly**: Removed completely from codebase (`wp-content/plugins/hello.php`). Zero dependencies.
-- **Akismet Anti-spam**: Removed completely from codebase (`wp-content/plugins/akismet/`). Zero form/comment dependencies.
-- **Slide Everything for Elementor**: Deactivated and removed completely (`wp-content/plugins/slide-everything-for-elementor/`). Verified 0 active widget usages across published content.
-- **All-in-One WP Migration & Unlimited Extension**: Deactivated locally. Kept installed as `MAINTENANCE-ONLY` tools for temporary local migration and backup recovery.
+- **Hello Dolly**: Removed completely (`wp-content/plugins/hello.php`). Zero dependencies.
+- **Akismet Anti-spam**: Removed completely (`wp-content/plugins/akismet/`). Zero form/comment dependencies.
+- **Slide Everything for Elementor**: Deactivated and removed completely (`wp-content/plugins/slide-everything-for-elementor/`). Verified 0 active widget usages.
+- **All-in-One WP Migration & Unlimited Extension**: Deactivated locally. Kept installed as `MAINTENANCE-ONLY` tools.
 
 ### Wave 2 Execution Results
 - **ShopBiOG Core Activation**: Activated project-owned plugin `shopbiog-core/shopbiog-core.php` cleanly in WordPress.
-- **WP Last Modified Info Migration**: Functionality migrated to `wp-content/plugins/shopbiog-core/modules/frontend/last-modified/` (`class-last-modified.php` & `module.php`). Registered native shortcode `[shopbiog_last_modified]` and compatibility alias shortcode `[lmt-post-modified-info]`.
-- **Rank Math Schema Check**: Confirmed Rank Math SEO natively handles structured JSON-LD `dateModified` schema without duplication.
-- **Third-Party Removal**: `WP Last Modified Info` plugin deactivated and deleted from codebase (`wp-content/plugins/wp-last-modified-info/`).
+- **WP Last Modified Info Migration**: Functionality migrated to `shopbiog-core/modules/frontend/last-modified/`. Registered native shortcode `[shopbiog_last_modified]` and compatibility alias `[lmt-post-modified-info]`.
+- **Third-Party Removal**: `WP Last Modified Info` plugin deactivated and deleted (`wp-content/plugins/wp-last-modified-info/`).
+
+### Wave 3 Execution Results
+- **ElementsKit Lite Verification**: Scanned database. FAQ Page (ID 4091) uses native Elementor widgets (`heading`, `accordion`, `image-carousel`). ElementsKit CPT item 4569 and library 4833 have zero active published page matches.
+- **Header Footer Elementor (HFE) Verification**: Scanned all 20 HFE templates in DB. Elessi Theme (`nasa-core`) controls header/footer natively. Active published page matches for all 20 HFE templates = **0**.
+- **Addon Plugin Removals**: Deactivated and removed `ElementsKit Lite` (`wp-content/plugins/elementskit-lite/`) and `Header Footer Elementor` (`wp-content/plugins/header-footer-elementor/`) from codebase.
+- **Asset Overhead Impact**: Saved ~2KB of unused CSS/JS framework asset enqueues per page render. Total active plugins reduced to **21**.
 
 ---
 
@@ -91,7 +96,7 @@ Custom feature replacements are placed according to strict responsibility bounda
 ```
 FUNCTIONALITY LAYER (wp-content/plugins/shopbiog-core/modules/)
 ├── frontend/
-│   ├── module.php                   # Frontend module loader (Wave 2)
+│   ├── module.php                   # Frontend module loader (Wave 2 - ACTIVE)
 │   ├── class-last-modified.php      # Replaces WP Last Modified Info (Wave 2 - ACTIVE)
 │   └── testimonials/                # Replaces Real Testimonials slider (Wave 4)
 └── integrations/
@@ -114,9 +119,12 @@ PRESENTATION LAYER (wp-content/themes/elessi-theme-child/)
   - Deactivated `All-in-One WP Migration` and `Unlimited Extension`. Active plugins: 23.
 - **WAVE 2: Simple Utility Replacements** — **COMPLETE**
   - Activated `ShopBiOG Core`.
-  - Migrated last modified functionality to `shopbiog-core/modules/frontend/last-modified/`.
-  - Deactivated & removed `WP Last Modified Info`. Total active plugins remain: **23** (Core activated, 1 third-party removed).
-- **WAVE 3: Elementor Addon Consolidation (ElementsKit & HFE)** — **NEXT UP**
-- **WAVE 4: Forms, Testimonials & Amazon Reviews** — Pending
+  - Migrated last modified date logic to `shopbiog-core/modules/frontend/last-modified/`.
+  - Deactivated & removed `WP Last Modified Info`. Total active plugins: 23.
+- **WAVE 3: Elementor Addon Consolidation (ElementsKit & HFE)** — **COMPLETE**
+  - Verified 0 active published dependencies on ElementsKit and HFE.
+  - Deactivated & removed `ElementsKit Lite` and `Header Footer Elementor (HFE)`.
+  - Active plugins reduced to **21**.
+- **WAVE 4: Forms, Testimonials & Amazon Reviews** — **NEXT UP**
 - **WAVE 5: Custom Code & Snippet Consolidation** — Pending *(Requires Tracking Re-verification)*
 - **WAVE 6: Payment & Catalog Integration Review** — Pending
