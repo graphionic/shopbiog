@@ -30,8 +30,8 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **Phase 5B — Wave 2 Simple Utility Replacements**: Activated `ShopBiOG Core`; migrated last modified date logic to `shopbiog-core/modules/frontend/last-modified/`; removed `WP Last Modified Info`. (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 3 Elementor Addon Consolidation**: Consolidated and removed `ElementsKit Lite` & `Header Footer Elementor (HFE)`. (**STATUS: COMPLETE**)
 * **Phase 5B — Wave 4 Forms / Testimonials / Review Components**: Replaced `Contact Form 7` with `ShopBiOG_Forms` and `Real Testimonials` with `ShopBiOG_Testimonials`. Active plugins reduced to 19. (**STATUS: COMPLETE**)
-* **Phase 5B — Wave 5 Custom Code & Snippet Consolidation**: Consolidate WPCode snippets (#9180 & #9182) into `shopbiog-core/modules/integrations/`. (**STATUS: NEXT UP**)
-* **STATUS:** **IN PROGRESS (5A, 5B Waves 1–4 Complete)**
+* **Phase 5B — Wave 5 Custom Code & Snippet Consolidation**: Consolidate WPCode snippets (#9180 & #9182) into `shopbiog-core/modules/integrations/`; deactivate and delete `WPCode Lite`. Active plugins reduced to 18. (**STATUS: COMPLETE**)
+* **STATUS:** **IN PROGRESS (5A, 5B Waves 1–5 Complete)**
 
 ### PHASE 6: Performance Optimization
 * Dequeue redundant CSS/JS assets; optimize Google Fonts & FontAwesome calls; optimize WebP images; tune database autoload options; configure WP Rocket caching.
@@ -62,8 +62,9 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 ## Current Verified Architecture Summary Notes
 
 > [!NOTE]  
-> **Verified Current State (as of Phase 5B Wave 4 Completion):**  
+> **Verified Current State (as of Phase 5B Wave 5 Completion):**  
 > * **Active Theme State:** Child theme `elessi-theme-child` is active (`Template: elessi-theme`, `Stylesheet: elessi-theme-child`). Theme mods synchronized 1:1 with 0 visual regressions.
-> * **Active Plugin Stack:** Total active plugins: 19. Removed `Contact Form 7` and `Real Testimonials`. Custom forms and testimonials handled natively via `ShopBiOG Core`.
-> * **Project Code Architecture:** Functionality layer active in `wp-content/plugins/shopbiog-core/modules/frontend/` (`last-modified/`, `forms/`, `testimonials/`); Presentation layer active in `wp-content/themes/elessi-theme-child/`.
+> * **Active Plugin Stack:** Total active plugins: **18**. Removed `WPCode Lite`. Meta pixel deduplication handled natively via `ShopBiOG Core` (`shopbiog-core/modules/integrations/class-meta-integration.php`).
+> * **Project Code Architecture:** Functionality layer active in `wp-content/plugins/shopbiog-core/modules/` (`frontend/`, `integrations/`); Presentation layer active in `wp-content/themes/elessi-theme-child/`.
 > * **Working Branch:** `staging` (Clean working tree, up to date with `origin/staging`).
+

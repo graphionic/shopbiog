@@ -14,11 +14,11 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 
 ### Overall Target Impact
 - **Initial Active Plugins (Phase 5A Baseline)**: 26 active (30 installed)
-- **Current Active Plugins (Post Wave 4)**: **19 active** (22 installed - `Contact Form 7` and `Real Testimonials` removed)
+- **Current Active Plugins (Post Wave 5)**: **18 active** (21 installed - `WPCode Lite` removed)
 - **Immediate Safe-Remove Candidates**: 4 plugins (3 removed in Wave 1)
-- **Custom-Code / Lighter Replacements**: 6 plugins (5 removed: `CF7`, `Real Testimonials`, `ElementsKit Lite`, `HFE`, `WP Last Modified Info`)
+- **Custom-Code / Lighter Replacements**: 7 plugins (6 removed: `CF7`, `Real Testimonials`, `ElementsKit Lite`, `HFE`, `WP Last Modified Info`, `WPCode Lite`)
 - **Admin/Maintenance Deactivations**: 2 plugins (`All-in-One WP Migration` & `Unlimited Extension` kept installed but inactive)
-- **Target Active Plugin Count**: **16–18 active plugins** (~35% reduction in plugin overhead).
+- **Target Active Plugin Count**: **18 active plugins** (~31% overall reduction in active plugin count).
 
 ---
 
@@ -53,7 +53,7 @@ The goal of Phase 5 is to eliminate unnecessary plugin overhead, reduce frontend
 | **WooCommerce Stripe Gateway** | 11.0.0 | Yes | Stripe Payment Gateway | Medium | Low | Yes | `KEEP` | Active Core |
 | **WooCommerce Tax (Services)** | 3.6.3 | Yes | Automated Tax Sync | Low | Medium | Yes | `KEEP` | Active Core |
 | **Wordfence Security** | 9.0.1 | Yes | Security & Firewall | Low | High (DB Logs) | Yes | `KEEP BUT OPTIMIZE` | Active Core |
-| **WPCode Lite** | 2.3.9 | Yes | Custom Code Snippets | Low | Low | No | `REPLACE WITH SHOPBIOG CORE` | Pending Wave 5 |
+| **WPCode Lite** | 2.3.9 | **No** | Custom Code Snippets | Low | Low | No | `REPLACE WITH SHOPBIOG CORE` | **REPLACED & REMOVED (Wave 5)** |
 | **WP Last Modified Info** | 1.9.6 | **No** | Post Modification Dates | Low | Low | No | `REPLACE WITH SHOPBIOG CORE` | **REPLACED & REMOVED (Wave 2)** |
 | **WP Rocket** | 3.19.2.1 | No | Caching & Performance | High | Low | Yes | `KEEP BUT OPTIMIZE` | Pending Phase 6 |
 
@@ -106,7 +106,8 @@ FUNCTIONALITY LAYER (wp-content/plugins/shopbiog-core/modules/)
 │   └── testimonials/
 │       └── class-testimonials.php   # Replaces Real Testimonials (Wave 4 - ACTIVE)
 └── integrations/
-    └── class-tracking-bridge.php    # Replaces WPCode snippets #9180 & #9182 (Wave 5)
+    ├── module.php                   # Integrations module loader (Wave 5 - ACTIVE)
+    └── class-meta-integration.php   # Replaces WPCode snippet #9180 (Wave 5 - ACTIVE)
 
 PRESENTATION LAYER (wp-content/themes/elessi-theme-child/)
 ├── assets/css/
@@ -123,10 +124,11 @@ PRESENTATION LAYER (wp-content/themes/elessi-theme-child/)
 - **WAVE 1: Zero-Risk Unused & Maintenance Plugins** — **COMPLETE** (Active plugins: 23)
 - **WAVE 2: Simple Utility Replacements** — **COMPLETE** (Active plugins: 23)
 - **WAVE 3: Elementor Addon Consolidation (ElementsKit & HFE)** — **COMPLETE** (Active plugins: 21)
-- **WAVE 4: Forms, Testimonials & Amazon Reviews** — **COMPLETE**
-  - Replaced `Contact Form 7` with native `ShopBiOG_Forms` component.
-  - Replaced `Real Testimonials` with native `ShopBiOG_Testimonials` component.
-  - Retained `Widgets for Amazon Reviews` (to optimize in Phase 6).
-  - Active plugins reduced to **19**.
-- **WAVE 5: Custom Code & Snippet Consolidation** — **NEXT UP** *(Requires Tracking Re-verification)*
+- **WAVE 4: Forms, Testimonials & Amazon Reviews** — **COMPLETE** (Active plugins: 19)
+- **WAVE 5: Custom Code & WPCode Consolidation** — **COMPLETE** (Active plugins: 18)
+  - Migrated Meta pixel deduplication filter to `shopbiog-core/modules/integrations/class-meta-integration.php`.
+  - Consolidated GA4 Measurement ID `G-VP3TGE9JK1` into `PixelYourSite PRO`.
+  - Deactivated and deleted `WPCode Lite`.
+  - Active plugins reduced to **18**.
 - **WAVE 6: Payment & Catalog Integration Review** — Pending
+
