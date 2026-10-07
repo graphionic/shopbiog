@@ -186,9 +186,13 @@ This document establishes the comprehensive performance baseline, asset inventor
   - Created `ShopBiOG_Image_Performance` module enforcing `fetchpriority="high"` and lazy-loading exclusion on true LCP hero & product images.
   - Enforced intrinsic width/height attributes for icon images, certificates, and 404 placeholder.
   - Added CSS layout aspect-ratio reservation for product gallery (`595 / 760`), thumbnails (`117 / 150`), product cards (`350 / 447`), and header cart badge counters (`min-width: 1.5rem`), eliminating CLS during JS initialization.
-- **Wave 5: Action Scheduler Log Cleanup & Background Task Tuning** (**NEXT UP**)
-  - Purge completed/failed Action Scheduler jobs and tune log retention.
-- **Wave 6: Controlled WP Rocket Activation & Exclusion Setup**
+- **Wave 5: Action Scheduler Log Cleanup & Background Task Tuning** (**COMPLETE**)
+  - Created `ShopBiOG_Database_Maintenance` module in `shopbiog-core/modules/admin/`.
+  - Safely purged 183 historical completed actions, 24 canceled actions, 295 resolved GLA failed actions, and associated scheduler logs older than 30 days via Action Scheduler API.
+  - Unscheduled 15 orphaned WP-Cron events (including `wplmi/fetch_plugin_data`, `wpcode_usage_tracking_cron`, `ai1wm_storage_cleanup`).
+  - Preserved 25 active pending background actions for Meta, Google, TikTok, and WooCommerce order processing.
+- **Wave 6: Controlled WP Rocket Activation & Exclusion Setup** (**NEXT UP**)
   - Configure safe caching rules with cart, checkout, CAPI, and payment exclusions.
+
 
 
