@@ -85,3 +85,29 @@ When deploying child-theme activation and custom architecture to the production 
 6. **Activate Child Theme**: Execute theme switch to `elessi-theme-child` via WP-CLI (`wp theme activate elessi-theme-child`) or WordPress admin.
 7. **Execute Visual Regression & Smoke Checks**: Verify key frontend pages (Homepage, Shop, Product, Cart, Checkout, My Account) for 1:1 visual match and zero errors.
 8. **Emergency Rollback Procedure**: If any visual or functional discrepancies appear, execute `wp theme activate elessi-theme` immediately to restore parent theme state.
+
+---
+
+## 6. Production Performance Reproduction Plan (Phase 6 Final)
+
+To reproduce the exact optimized performance architecture on production, follow this strict 18-step execution order:
+
+1. **Full Production Backup**: Take full database SQL dump & file backup of production.
+2. **Deploy Code Base**: Merge `staging` -> `main` and pull latest codebase to production server.
+3. **Verify ShopBiOG Core Active**: Confirm `shopbiog-core` is active in `wp-content/plugins/`.
+4. **Deploy Child Theme Files**: Confirm `elessi-theme-child` directory is present under `wp-content/themes/`.
+5. **Synchronize Theme Mods**: Run `theme_mod` synchronization from `elessi-theme` to `elessi-theme-child` before theme switch.
+6. **Activate Child Theme**: Set active theme to `elessi-theme-child`.
+7. **Activate WP Rocket**: Activate `wp-rocket/wp-rocket.php` (v3.19.2.1).
+8. **Reproduce WP Rocket Settings**: Set `cache_mobile = 1`, `do_caching_mobile_files = 1`, `cache_logged_user = 0`, `cache_ssl = 1`, `purge_cron_interval = 10`.
+9. **Configure Cache Exclusions**: Set `cache_reject_uri` patterns (`/cart/`, `/shopping-cart/`, `/checkout/`, `/my-account/`, `/checkouts/`, `/offer/`, `/wp-json/`, `/wc-api/`).
+10. **Configure Cookie Exclusions**: Set `cache_reject_cookies` patterns (`woocommerce_items_in_cart`, `woocommerce_cart_hash`, `wp_woocommerce_session_`).
+11. **Enforce Heartbeat Strategy**: Set `control_heartbeat = 1` with `heartbeat_admin_behavior = reduce_periodicity`, `heartbeat_site_behavior = reduce_periodicity`, and `heartbeat_editor_behavior = default`.
+12. **Disable Aggressive Rocket Features**: Keep RUCSS, JS Defer, Delay JS, CSS Minification, and Image LazyLoad disabled.
+13. **Verify `ShopBiOG_Cache_Compatibility`**: Confirm module loads and registers runtime filters.
+14. **Clear & Regenerate Elementor CSS**: Run Elementor CSS regeneration in WP Admin -> Elementor -> Tools.
+15. **Purge WP Rocket Cache**: Flush WP Rocket cache domain.
+16. **Run Functional Smoke Tests**: Verify Homepage, Shop, Product, Cart, Checkout, My Account, and Contact form.
+17. **Verify Tracking Systems**: Test PixelYourSite PRO Meta Pixel, CAPI, GA4, and TikTok events.
+18. **Verify Payment Gateways**: Confirm Stripe credit card fields and PayPal Smart Buttons initialize and process test intents cleanly.
+
