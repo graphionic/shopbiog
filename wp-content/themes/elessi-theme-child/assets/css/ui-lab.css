@@ -1,0 +1,447 @@
+/**
+ * BiO-G UI Lab / Design System Preview Styling
+ * Location: wp-content/themes/elessi-theme-child/assets/css/ui-lab.css
+ *
+ * Scoped strictly to .biog-ui-lab container to prevent global production bleed.
+ */
+
+.biog-ui-lab {
+  font-family: var(--biog-font-sans);
+  background-color: var(--biog-color-bg-body);
+  color: var(--biog-color-text-main);
+  line-height: var(--biog-line-height-normal);
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header & Top Bar */
+.biog-lab-header {
+  background-color: #111827;
+  color: #FFFFFF;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--biog-color-primary);
+}
+
+.biog-lab-title h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+}
+
+.biog-lab-title p {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin: 4px 0 0 0;
+}
+
+.biog-lab-status-tag {
+  background-color: #374151;
+  color: #F3F4F6;
+  padding: 6px 14px;
+  border-radius: var(--biog-radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Layout Containers */
+.biog-lab-container {
+  max-width: var(--biog-container-max);
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.biog-lab-section {
+  background-color: #FFFFFF;
+  border: 1px solid var(--biog-color-border);
+  border-radius: var(--biog-radius-lg);
+  padding: 32px;
+  margin-bottom: 48px;
+  box-shadow: var(--biog-shadow-sm);
+}
+
+.biog-lab-section-head {
+  border-bottom: 1px solid var(--biog-color-border);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.biog-lab-section-head h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--biog-color-dark);
+  margin: 0 0 4px 0;
+}
+
+.biog-lab-section-head p {
+  font-size: 14px;
+  color: var(--biog-color-text-muted);
+  margin: 0;
+}
+
+/* Color Palette Cards */
+.biog-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.biog-palette-card {
+  border: 1px solid var(--biog-color-border);
+  border-radius: var(--biog-radius-md);
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+.biog-palette-card-head {
+  padding: 16px 20px;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid var(--biog-color-border);
+}
+
+.biog-palette-card-head h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--biog-color-dark);
+}
+
+.biog-swatch-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.biog-swatch-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 13px;
+}
+
+.biog-swatch-color {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  margin-right: 12px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Typography Preview */
+.biog-typo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+}
+
+.biog-typo-card {
+  background-color: var(--biog-color-bg-surface);
+  padding: 24px;
+  border-radius: var(--biog-radius-md);
+  border: 1px solid var(--biog-color-border);
+}
+
+.biog-typo-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--biog-color-border);
+}
+
+/* Button Component System */
+.biog-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.biog-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--biog-btn-height-md);
+  padding: 0 24px;
+  font-family: var(--biog-font-sans);
+  font-size: 14px;
+  font-weight: var(--biog-font-weight-medium);
+  border-radius: var(--biog-radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.biog-btn-primary {
+  background-color: var(--biog-color-primary);
+  color: #FFFFFF;
+}
+
+.biog-btn-primary:hover {
+  background-color: var(--biog-color-primary-hover);
+  color: #FFFFFF;
+}
+
+.biog-btn-secondary {
+  background-color: var(--biog-color-dark);
+  color: #FFFFFF;
+}
+
+.biog-btn-secondary:hover {
+  background-color: #1F2937;
+  color: #FFFFFF;
+}
+
+.biog-btn-outline {
+  background-color: transparent;
+  border-color: var(--biog-color-dark);
+  color: var(--biog-color-dark);
+}
+
+.biog-btn-outline:hover {
+  background-color: var(--biog-color-dark);
+  color: #FFFFFF;
+}
+
+.biog-btn-tertiary {
+  background-color: transparent;
+  color: var(--biog-color-primary);
+  padding: 0;
+  height: auto;
+  text-decoration: underline;
+}
+
+/* Product Card Preview */
+.biog-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.biog-product-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--biog-color-border);
+  border-radius: var(--biog-radius-md);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.biog-product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--biog-shadow-md);
+}
+
+.biog-card-media {
+  position: relative;
+  aspect-ratio: 350 / 447;
+  background-color: #F9FAFB;
+  overflow: hidden;
+}
+
+.biog-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.biog-card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--biog-color-dark);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--biog-radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.biog-card-content {
+  padding: 16px;
+}
+
+.biog-card-title {
+  font-size: 15px;
+  font-weight: var(--biog-font-weight-medium);
+  color: var(--biog-color-dark);
+  margin: 0 0 8px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.biog-card-price {
+  font-size: 15px;
+  font-weight: var(--biog-font-weight-bold);
+  color: var(--biog-color-dark);
+}
+
+.biog-card-price del {
+  color: var(--biog-color-text-muted);
+  font-weight: 400;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+/* Purchase Panel Preview */
+.biog-purchase-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background-color: #FFFFFF;
+  padding: 32px;
+  border-radius: var(--biog-radius-lg);
+  border: 1px solid var(--biog-color-border);
+}
+
+@media (max-width: 768px) {
+  .biog-purchase-panel {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+.biog-size-picker {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 24px 0;
+}
+
+.biog-size-pill {
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--biog-color-border-dark);
+  border-radius: var(--biog-radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.biog-size-pill.active {
+  border-color: var(--biog-color-primary);
+  background-color: var(--biog-color-bg-alt);
+  color: var(--biog-color-primary);
+  font-weight: 700;
+}
+
+/* Trust Strip */
+.biog-trust-strip {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: var(--biog-color-bg-surface);
+  padding: 24px;
+  border-radius: var(--biog-radius-md);
+  border: 1px solid var(--biog-color-border);
+}
+
+.biog-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.biog-trust-item svg {
+  width: 24px;
+  height: 24px;
+  color: var(--biog-color-primary);
+}
+
+/* Science & Proof Component */
+.biog-proof-box {
+  background-color: var(--biog-color-bg-surface);
+  border: 1px solid var(--biog-color-border);
+  border-left: 4px solid var(--biog-color-primary);
+  padding: 24px 32px;
+  border-radius: 0 var(--biog-radius-md) var(--biog-radius-md) 0;
+  margin: 24px 0;
+}
+
+.biog-proof-box h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: var(--biog-color-dark);
+  font-weight: 600;
+}
+
+.biog-proof-box p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--biog-color-text-muted);
+  line-height: 1.6;
+}
+
+/* Hero Mockups */
+.biog-hero-mock {
+  background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+  color: #FFFFFF;
+  padding: 64px 40px;
+  border-radius: var(--biog-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.biog-hero-mock h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  color: #FFFFFF;
+}
+
+.biog-hero-mock p {
+  font-size: 18px;
+  color: #D1D5DB;
+  margin: 0 0 32px 0;
+  max-width: 600px;
+}
+
+/* Form Controls */
+.biog-form-field {
+  margin-bottom: 20px;
+}
+
+.biog-form-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--biog-color-dark);
+}
+
+.biog-input {
+  width: 100%;
+  height: var(--biog-input-height);
+  padding: 0 16px;
+  border: 1px solid var(--biog-color-border-dark);
+  border-radius: var(--biog-radius-md);
+  font-family: var(--biog-font-sans);
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.biog-input:focus {
+  border-color: var(--biog-color-primary);
+  box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.15);
+}

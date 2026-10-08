@@ -1,0 +1,116 @@
+/**
+ * BiO-G Premium Everyday — Design Tokens
+ * Location: wp-content/themes/elessi-theme-child/assets/css/design-tokens.css
+ *
+ * Scoped namespaced custom properties for BiO-G storefront.
+ * DO NOT apply to global un-scoped selectors (button, input, h1) during Phase 7B.
+ */
+
+:root {
+  /* ==========================================================================
+     1. COLOR PALETTE OPTIONS (BiO-G Premium Everyday)
+     ========================================================================== */
+
+  /* Palette Option A — Deep Botanical */
+  --biog-opt-a-primary: #2A5A44;
+  --biog-opt-a-primary-hover: #1F4433;
+  --biog-opt-a-dark: #1A201C;
+  --biog-opt-a-body: #2D3732;
+  --biog-opt-a-muted: #637068;
+  --biog-opt-a-bg: #FAFAF8;
+  --biog-opt-a-surface: #F2F1ED;
+  --biog-opt-a-border: #E1E0D9;
+  --biog-opt-a-accent: #438B6A;
+
+  /* Palette Option B — Premium Forest (Default Baseline) */
+  --biog-opt-b-primary: #1B4D3E;
+  --biog-opt-b-primary-hover: #13392E;
+  --biog-opt-b-dark: #111827;
+  --biog-opt-b-body: #1F2937;
+  --biog-opt-b-muted: #6B7280;
+  --biog-opt-b-bg: #FDFBF7;
+  --biog-opt-b-surface: #F4F1EA;
+  --biog-opt-b-border: #E5E7EB;
+  --biog-opt-b-accent: #3B7A66;
+
+  /* Palette Option C — Modern Heritage */
+  --biog-opt-c-primary: #2D4F3A;
+  --biog-opt-c-primary-hover: #213B2B;
+  --biog-opt-c-dark: #1C2421;
+  --biog-opt-c-body: #2A332E;
+  --biog-opt-c-muted: #65736B;
+  --biog-opt-c-bg: #FAF9F5;
+  --biog-opt-c-surface: #F0EEE6;
+  --biog-opt-c-border: #DDD9CE;
+  --biog-opt-c-accent: #48775A;
+
+  /* Active Design System Colors */
+  --biog-color-primary: var(--biog-opt-b-primary);
+  --biog-color-primary-hover: var(--biog-opt-b-primary-hover);
+  --biog-color-dark: #111827;
+  --biog-color-text-main: #1F2937;
+  --biog-color-text-muted: #6B7280;
+  --biog-color-text-light: #9CA3AF;
+  --biog-color-bg-body: #FFFFFF;
+  --biog-color-bg-surface: #F9FAFB;
+  --biog-color-bg-alt: #F4F1EA;
+  --biog-color-border: #E5E7EB;
+  --biog-color-border-dark: #D1D5DB;
+  --biog-color-sale: #C93B3B;
+  --biog-color-star: #D97706;
+
+  /* ==========================================================================
+     2. TYPOGRAPHY SYSTEM
+     ========================================================================== */
+  --biog-font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --biog-font-serif: 'Playfair Display', Georgia, serif;
+
+  --biog-font-weight-regular: 400;
+  --biog-font-weight-medium: 500;
+  --biog-font-weight-semibold: 600;
+  --biog-font-weight-bold: 700;
+
+  --biog-font-size-xs: 12px;
+  --biog-font-size-sm: 13px;
+  --biog-font-size-base: 15px;
+  --biog-font-size-md: 17px;
+  --biog-font-size-lg: 20px;
+  --biog-font-size-xl: 24px;
+  --biog-font-size-2xl: 30px;
+  --biog-font-size-3xl: 38px;
+
+  --biog-line-height-tight: 1.2;
+  --biog-line-height-normal: 1.5;
+  --biog-line-height-relaxed: 1.65;
+
+  /* ==========================================================================
+     3. SPACING SYSTEM (8-Point Scale)
+     ========================================================================== */
+  --biog-space-1: 4px;
+  --biog-space-2: 8px;
+  --biog-space-3: 12px;
+  --biog-space-4: 16px;
+  --biog-space-6: 24px;
+  --biog-space-8: 32px;
+  --biog-space-12: 48px;
+  --biog-space-16: 64px;
+  --biog-space-24: 96px;
+
+  /* ==========================================================================
+     4. SHAPE LANGUAGE & CONTAINERS (Soft Modern / Refined)
+     ========================================================================== */
+  --biog-radius-sm: 4px;
+  --biog-radius-md: 8px;
+  --biog-radius-lg: 12px;
+  --biog-radius-full: 9999px;
+
+  --biog-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --biog-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  --biog-container-max: 1200px;
+  --biog-container-narrow: 840px;
+
+  --biog-btn-height-lg: 48px;
+  --biog-btn-height-md: 42px;
+  --biog-input-height: 44px;
+}
