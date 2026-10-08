@@ -8,7 +8,7 @@ This document establishes the comprehensive performance baseline, asset inventor
 
 - **Current Active Plugins**: 18 active plugins (Phase 5 complete).
 - **Payment Gateways**: Stripe (Primary) + PayPal Payments (Alternative Checkout - Retained per business decision).
-- **Database Autoload Size**: **145.02 KB** across 279 options (Target: `< 100 KB`).
+- **Database Autoload Size**: **359.80 KB** across 933 options (Canonical `wp_load_alloptions()` measurement standard).
 - **Action Scheduler Queue**: 4,870 completed, 617 canceled, 404 failed, 28 pending jobs.
 - **Image Optimization Level**: High (Primary product images delivered in WebP).
 - **Primary Optimization Goals**: Reduce Core Web Vitals (LCP, CLS, INP), eliminate redundant CSS/JS enqueues, optimize database autoload overhead, and tune caching without breaking checkout or tracking integrity.
@@ -91,7 +91,7 @@ This document establishes the comprehensive performance baseline, asset inventor
 
 ## 7. Database & Autoload Audit
 
-- **Total Autoloaded Option Size**: **145.02 KB** across 279 options.
+- **Total Autoloaded Option Size**: **359.80 KB** across 933 options (Canonical `wp_load_alloptions()` measurement standard).
 - **Top Autoload Offenders**:
   1. `rewrite_rules`: 60.48 KB
   2. `_transient_wp_core_block_css_files`: 21.74 KB

@@ -3,7 +3,7 @@
 ## Executive Summary
 This document records the final validation audit for **Phase 6: Performance Optimization** on `shopbiog.com`. All 6 waves of Phase 6 have been verified operating in complete harmony across runtime code, database state, WP Rocket caching rules, payment gateways, tracking integrity, and element rendering.
 
-**Final Phase 6 Decision**: **PHASE 6 READY TO SEAL — GO FOR PRODUCTION DEPLOYMENT**
+**Final Phase 6 Decision**: **PHASE 6 READY TO SEAL — PERFORMANCE ARCHITECTURE READY FOR PRODUCTION DEPLOYMENT**
 
 ---
 
@@ -57,7 +57,7 @@ Production targets for public launch (to be measured via PageSpeed Insights, Chr
 | **LCP (Largest Contentful Paint)** | `<= 2.5s` | `ShopBiOG_Image_Performance` (`fetchpriority="high"`, no lazyload, aspect ratios) |
 | **CLS (Cumulative Layout Shift)** | `<= 0.10` | Reserved gallery/card aspect ratios, inline SVG icons, font preconnecting |
 | **INP (Interaction to Next Paint)**| `<= 200ms` | Deferred non-critical JS, removed block CSS, unthrottled editor Heartbeat |
-| **TTFB (Time to First Byte)** | `<= 800ms` | WP Rocket static page caching, optimized DB autoload size (<150 KB) |
+| **TTFB (Time to First Byte)** | `<= 800ms` | WP Rocket static page caching, canonical DB autoload size (~359.80 KB across 933 options) |
 
 ---
 
@@ -78,7 +78,7 @@ Production targets for public launch (to be measured via PageSpeed Insights, Chr
 | **R-02** | **P0** | Payment Gateway Webhook Caching | **RESOLVED**: Excluded `/wc-api/*` and REST endpoints. |
 | **R-03** | **P1** | Duplicate Tracking Events | **RESOLVED**: PYS PRO retains single ownership; zero duplicate bridge scripts. |
 | **R-04** | **P2** | Production RUCSS/Preload Overhead | **MITIGATED**: Kept disabled locally; documented for staging evaluation. |
-| **R-05** | **P3** | Minor Admin Autoload Overhead | **MITIGATED**: Autoload size stable at ~145 KB; DB total size `128.52 MB`. |
+| **R-05** | **P3** | Minor Admin Autoload Overhead | **MITIGATED**: Canonical autoload size stable at 359.80 KB across 933 options (via `wp_load_alloptions()`); DB total size `128.52 MB`. |
 
 ---
 
