@@ -50,14 +50,17 @@ This document maps the 11-phase execution roadmap for modernizing the BiO-G WooC
 * **STATUS:** **COMPLETE & SEALED (Phase 6 Fully Sealed)**
 
 
-### PHASE 7: Design System & Styling Framework (**STATUS: NEXT UP**)
-
-
-
-
-### PHASE 7: Design System & Styling Framework
-* Establish unified design tokens (typography, color palettes, spacing, button styles, card borders, mobile breakpoints).
-* **STATUS:** **PENDING**
+### PHASE 7: Design System & UX Modernization
+* **Phase 7A — Visual, UX & Conversion Audit**: Completed route-by-route audit, header/mobile navigation analysis, product card & page conversion mapping, and design token draft (`docs/DESIGN-UX-AUDIT.md`, `docs/DESIGN-SYSTEM.md`). (**STATUS: COMPLETE**)
+* **Phase 7B — Global Design Tokens & Base Components**: Implement CSS custom properties (`--biog-*`), typography scale, and base button/form tokens in `elessi-theme-child/style.css`. (**STATUS: NEXT UP**)
+* **Phase 7C — Header & Mobile Navigation Modernization**: Modernize desktop header height and mobile drawer touch targets. (**STATUS: PENDING**)
+* **Phase 7D — Product Card System & Shop Grid**: Standardize product card aspect ratios (`350:447`), swatches, and catalog scanability. (**STATUS: PENDING**)
+* **Phase 7E — Product Page Experience**: Refine single product above-the-fold conversion, swatches, size guide, and trust badges. (**STATUS: PENDING**)
+* **Phase 7F — Homepage Transformation**: Elevate brand storytelling, hero section, and odor-control technology highlights. (**STATUS: PENDING**)
+* **Phase 7G — Cart & Checkout UX Polish**: Refine mini-cart drawer and FunnelKit checkout visual alignment. (**STATUS: PENDING**)
+* **Phase 7H — Supporting Pages & Footer Refinement**: Polish FAQ, Contact form, Landing 5885, and site footer. (**STATUS: PENDING**)
+* **Phase 7I — Final Responsive & Conversion QA**: Cross-device visual QA and conversion path testing. (**STATUS: PENDING**)
+* **STATUS:** **IN PROGRESS (Phase 7A Complete)**
 
 ### PHASE 8: UX / UI Redesign
 * Modernize header, mobile navigation drawer, homepage hero, shop catalog grid, single product page layout, cart drawer, checkout, and footer.
