@@ -26,3 +26,5 @@ Thumbs.db
 .idea/
 scratch/
 
+# Local visual reference material
+docs/ui references/
